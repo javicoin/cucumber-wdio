@@ -19,3 +19,7 @@ allure-results
 
 # Webstrom directories
 .idea
+
+# Others
+config/
+package-lock.json

@@ -1,10 +1,10 @@
 class AndroidInfo {
     static deviceName() {
-        return 'Pixel3a'; // pass the udid or devicename
+        return 'emulator-5554'; // pass the udid or devicename
     }
 
     static platFormVersion() {
-        return '9'; // pass the platform version
+        return '13'; // pass the platform version
     }
 
     static appName() {
