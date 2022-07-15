@@ -17,9 +17,6 @@ allure-results
 # Optional npm cache directory
 .npm
 
-# Webstrom directories
-.idea
-
 # Others
 config/
 package-lock.json
