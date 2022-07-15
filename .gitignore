@@ -13,10 +13,12 @@ node_modules/
 # Reports
 allure-report
 allure-results
+reports/web
+reports/mobile
 
 # Optional npm cache directory
 .npm
 
 # Others
-config/
 package-lock.json
+driver-logs/

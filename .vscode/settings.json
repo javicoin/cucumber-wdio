@@ -3,7 +3,7 @@
         "./src/stepDefinitions/*steps.js"
     ],
     "cucumberautocomplete.syncfeatures": "./src/features/*feature",
-    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.strictGherkinCompletion": false,
     "cucumberautocomplete.strictGherkinValidation": true,
     "cucumberautocomplete.smartSnippets": true,
     "cucumberautocomplete.stepsInvariants": true,

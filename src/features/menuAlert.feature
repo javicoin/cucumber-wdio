@@ -5,4 +5,9 @@ Feature: AwesomeApp - Side menu & Alert
     Given I launch the app
     When I slide out user menu
     And I go to the ultimate answer
-    Then I verify an alert with title "42" is shown
+    Then I verify an alert with title "42" is shown  
+
+  @chrome
+  Scenario: browser test
+    Given I navigate to IOV website
+    

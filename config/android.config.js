@@ -1,4 +1,4 @@
-const {config} = require('./wdio.conf');
+const {config} = require('./mobile.wdio.conf');
 const AndroidInfo = require('./android.device.info');
 const path = require('path');
 
@@ -9,7 +9,7 @@ config.capabilities = [
         maxInstances: 1,
         'appium:automationName': 'UIAutomator2',
         'appium:deviceName': AndroidInfo.deviceName(),
-        //'appium:platformVersion': AndroidInfo.platFormVersion(),
+        'appium:platformVersion': AndroidInfo.platFormVersion(),
         'appium:app': path.resolve(`./apps/${AndroidInfo.appName()}`)
     }
 ];
