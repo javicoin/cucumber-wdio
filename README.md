@@ -1,21 +1,21 @@
-# WebdriverIO-V6-appium-cucumber-allure
+# Cucumber WebdriverIO-V6
 
-Run native automation for android and ios using cucumber-wdio-allure with page object pattern.
+Run native automation for web (browser) & mobile (android and ios) using cucumber-wdio with page object pattern.
 
 ## Based on
 
 - WebdriverIO v6
 - Cucumber v6
 - Node version 16 or higher
-- Appium 2.0.0 & XCUITest/UIAutomator2
 - JAVA JDK 11 or higher
+- Appium 2.0.0 & XCUITest/UIAutomator2
+- Browser drivers (chromedriver)
 
 ## Supports
 
 - Native Android and iOS apps
 - Contains sample test scenarios in cucumber
 - Page Object Model
-- Allure html reports
 
 ## Additional requirements
 
@@ -33,7 +33,7 @@ For Android
 
 For iOS
 - XCode
-- Xcode Command Line Tools
+- XCode Command Line Tools
 - Carthage
 - iOS emulators
 
@@ -47,7 +47,6 @@ Click below to know more
 - [Running Appium Tests](http://appium.io/docs/en/writing-running-appium/running-tests/)
 - [Webdriver.IO](https://webdriver.io/docs/)
 - [Cucumber](https://cucumber.io/docs/cucumber/)
-- [Allure reporter](https://webdriver.io/docs/allure-reporter)
 
 
 ## Running tests & Reports
@@ -65,5 +64,3 @@ Follow the below commands
 - Execute `npm run ios` or `ios` script to run ios native app
 
 - Execute `npm run lint` or `lint` script to run eslint
-
-- Execute `allure generate --clean './allure-results' && allure open` or `open-allure` script to run allure report

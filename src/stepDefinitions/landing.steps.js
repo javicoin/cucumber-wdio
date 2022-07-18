@@ -18,4 +18,3 @@ When(/^I open Settings tab$/, async function () {
 Given(/^I navigate to IOV website$/,async function () {
 	await browser.url('https://www.iovlabs.org/');
 });
-
