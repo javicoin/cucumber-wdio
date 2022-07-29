@@ -11,8 +11,6 @@ npm-debug.log*
 node_modules/
 
 # Reports
-allure-report
-allure-results
 reports/web
 reports/mobile
 
@@ -20,5 +18,4 @@ reports/mobile
 .npm
 
 # Others
-package-lock.json
 driver-logs/

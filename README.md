@@ -7,7 +7,7 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - WebdriverIO v6
 - Cucumber v6
 - Node version 16 or higher
-- JAVA JDK 11 or higher
+- JAVA JDK 11
 - Appium 2.0.0 & XCUITest/UIAutomator2
 - Browser drivers (chromedriver)
 
@@ -20,6 +20,7 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 ## Additional requirements
 
 - [Java JDK 11 or higher](https://www.codejava.net/java-se/install-openjdk-18-on-macos/)
+Execute `brew tap homebrew/cask-versions` and `brew install --cask zulu11`
 - [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
 - [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
 - [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
@@ -30,6 +31,7 @@ For Android
 - Android Studio
 - Android SDK tools & platform tools
 - AVD Manager to create & configure android emulators (with developer options enabled)
+[Environment setup] (https://reactnative.dev/docs/environment-setup)
 
 For iOS
 - XCode

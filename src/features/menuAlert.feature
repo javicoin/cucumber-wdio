@@ -1,6 +1,6 @@
 Feature: AwesomeApp - Side menu & Alert
 
-  @android @ios
+ # @android @ios
   Scenario: Validate native alert
     Given I launch the app
     When I slide out user menu

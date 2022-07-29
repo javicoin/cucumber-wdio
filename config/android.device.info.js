@@ -1,14 +1,14 @@
 class AndroidInfo {
     static deviceName() {
-        return 'emulator-5554'; // pass the udid or devicename
+        return 'Pixel_5_API_31'; // pass the udid or devicename
     }
 
     static platFormVersion() {
-        return '13'; // pass the platform version
+        return '12'; // pass the platform version
     }
 
     static appName() {
-        return 'AwesomeApp.apk'; // pass the apk name
+        return 'app-release_swallet.apk'; // pass the apk name
     }
 }
 

@@ -6,13 +6,13 @@ Feature: AwesomeApp - Dashboard & Settings
     When I open Dashboard tab
     Then I verify Dashboard page loaded
 
-  @android @ios
+ # @android @ios
   Scenario: Validate Settings tab load
     Given I launch the app
     When I open Settings tab
     Then I verify Settings page loaded
 
-  @android @ios
+ # @android @ios
   Scenario: Dummy test failure
     Given I launch the app
     Then I verify Settings page loaded
