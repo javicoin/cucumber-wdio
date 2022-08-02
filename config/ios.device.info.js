@@ -1,6 +1,6 @@
 class IosInfo {
     static deviceName() {
-        return 'iPhone 11'; // pass the device name
+        return 'iPhone 13'; // pass the device name
     }
 
     static platFormVersion() {

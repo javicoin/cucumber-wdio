@@ -8,33 +8,34 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - Cucumber v6
 - Node version 16, execute `npm install -g node@16.15.1`
 - NPM version 6, execute `npm -g install npm@6`
-- JAVA JDK 11
-- Appium 2.0.0 & XCUITest/UIAutomator2
-  Execute `npm install -g appium@2.0.0-beta.41` or `npm i -g appium@next`
-  Execute `appium driver install uiautomator2` 
-  Execute `appium driver install xcuitest`
+- JAVA JDK 11, execute `brew tap homebrew/cask-versions` and `brew install --cask zulu11`
+- Appium 2.0.0, execute `npm install -g appium@2.0.0-beta.41` or `npm i -g appium@next`
+- UIAutomator2 driver, execute `appium driver install uiautomator2`
+- XCUITest, execute `appium driver install xcuitest`
 - Browser drivers (chromedriver)
 
 ## Supports
 
-- Native Android and iOS apps
+- Native/Hybrid Android & iOS apps, web browsers
 - Contains sample test scenarios in cucumber
 - Page Object Model
 
 ## Additional requirements
 
-- Java JDK 11, execute `brew tap homebrew/cask-versions` and `brew install --cask zulu11`
+- Java JDK 11
 - [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
-- [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
-- [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
 - [Appium inspector](https://github.com/appium/appium-inspector/releases)
 - [Appium doctor](https://www.npmjs.com/package/appium-doctor)
+- [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
+- [Appium driver XCUITest repository](https://github.com/appium/appium-xcuitest-driver#desired-capabilities)
+- [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
+- [Appium driver UIAutomator2 selectors](https://developer.android.com/reference/androidx/test/uiautomator/package-summary)
 
 For Android
 - Android Studio
 - Android SDK tools & platform tools
 - AVD Manager to create & configure android emulators (with developer options enabled)
-[Environment setup] (https://reactnative.dev/docs/environment-setup)
+- [React environment setup](https://reactnative.dev/docs/environment-setup)
 
 For iOS
 - XCode
