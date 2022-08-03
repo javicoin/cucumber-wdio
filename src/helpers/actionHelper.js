@@ -9,6 +9,15 @@ class ActionHelper {
     }
 
     /**
+     * Launches a fresh native app in the driver
+     *
+     */
+     static async launchFreshApp() {
+        await driver.resetApp();
+        await driver.launchApp();
+    }     
+
+    /**
      * Switches the driver to native context
      *
      */
@@ -19,11 +28,11 @@ class ActionHelper {
     /**
      * Stops the driver for a given amount of time
      *
-     * @param seconds
+     * @param miliseconds
      *
      */
-    static async pause(seconds) {
-        await browser.pause(seconds * 1000);
+    static async pause(miliseconds = 2000) {
+        await browser.pause(miliseconds);
     }
 
     /**
@@ -33,21 +42,31 @@ class ActionHelper {
      *
      */
     static async click(locator) {
-        const elem = await $(locator);
-        await elem.waitForDisplayed({ timeout: 3000 });
-        await elem.click();
+        try {
+            const elem = await $(locator);
+            await elem.waitForDisplayed({ timeout: 3000 });
+            await elem.click();
+        } catch (error) {
+            console.log("Error while clicking on element: " + error);
+            throw new Exception("Error while clicking on element: " + error);
+        }
     }
 
     /**
      * Waits for an element to be displayed
      *
      * @param {String} locator
-     * @param waitTimeInSeconds
+     * @param waitTimeInMiliSeconds
      *
      */
-    static async waitForElement(locator, waitTimeInSeconds) {
-        const elem = await $(locator);
-        await elem.waitForDisplayed(waitTimeInSeconds * 1000);
+    static async waitForElement(locator, waitTimeInMiliSeconds = 1000) {
+        try{
+            const elem = await $(locator);
+            await elem.waitForDisplayed(waitTimeInMiliSeconds);
+        } catch (error) {
+            console.log("Element not displayed: " + error);
+            throw new Exception("Element not displayed: " + error);
+        }
     }
 
     /**
@@ -58,6 +77,7 @@ class ActionHelper {
      */
     static async getText(locator) {
         const elem = await $(locator);
+        await this.waitForElement(elem);
         return await elem.getText();
     }
 

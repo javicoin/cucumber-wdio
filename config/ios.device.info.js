@@ -8,7 +8,7 @@ class IosInfo {
     }
 
     static appName() {
-        return 'AwesomeApp.app'; // pass the bundleid or ipa name
+        return 'sWallet.app'; // pass the bundleid or ipa name
     }
 }
 
