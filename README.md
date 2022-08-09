@@ -19,6 +19,8 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - Native/Hybrid Android & iOS apps, web browsers
 - Contains sample test scenarios in cucumber
 - Page Object Model
+- Allure html reports
+
 
 ## Additional requirements
 
@@ -40,8 +42,7 @@ For Android
 For iOS
 - XCode
 - XCode Command Line Tools
-- Carthage
-- iOS emulators
+- iOS simulators
 
 
 ## Source

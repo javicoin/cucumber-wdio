@@ -138,19 +138,17 @@ exports.config = {
                 jsonFolder: './reports/web',
                 language: 'en',
             }
+        ],
+        [
+            'allure', {
+                outputDir: './reports/web/allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+                useCucumberStepReporter: true,
+                disableMochaHooks: true
+            }
         ]
     ],
-    // reporters: [
-    //     [
-    //         'allure', {
-    //             outputDir: 'allure-results',
-    //             disableWebdriverStepsReporting: false,
-    //             disableWebdriverScreenshotsReporting: false,
-    //             // disableMochaHooks: true,
-    //             // useCucumberStepReporter: true
-    //         }
-    //     ]
-    // ],
     // =====
     // Hooks
     // =====

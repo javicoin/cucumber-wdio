@@ -1,3 +1,6 @@
+const AllureReporter = require("@wdio/allure-reporter").default;
+
+
 exports.config = {
     //
     // ====================
@@ -104,21 +107,32 @@ exports.config = {
     // before running any tests.
     framework: 'cucumber',
     cucumberOpts: {
-        backtrace: false,
-        requireModule: [],
-        failAmbiguousDefinitions: false,
-        failFast: false,
-        ignoreUndefinedDefinitions: false,
-        name: [],
-        profile: [],
+        // <string[]> (file/dir) require files before executing features
         require: [
             './src/stepDefinitions/*.steps.js'
         ],
+        // <boolean> show full backtrace for errors
+        backtrace: false,
+        // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        requireModule: [],
+        failAmbiguousDefinitions: false,
+        // <boolean> abort the run on first failure
+        failFast: false,
+        // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        format: ['pretty'],
+        // <boolean> Enable this config to treat undefined definitions as warnings.
+        ignoreUndefinedDefinitions: false,
+        // <string[]> (name) specify the profile to use
+        profile: [],
         snippetSyntax: undefined,
+        // <boolean> hide step definition snippets for pending steps
         snippets: true,
+        // <boolean> hide source uris
         source: true,
+        // <boolean> fail if there are any undefined or pending steps
         strict: false,
         tagsInTitle: false,
+        // <number> timeout for step definitions
         timeout: 50000,
         retry: 0
     },
@@ -138,19 +152,17 @@ exports.config = {
                 jsonFolder: './reports/mobile',
                 language: 'en',
             }
+        ],
+        [
+            'allure', {
+                outputDir: './reports/mobile/allure-results',
+                disableWebdriverStepsReporting: false,
+                disableWebdriverScreenshotsReporting: false,
+                useCucumberStepReporter: true,
+                disableMochaHooks: true
+            }
         ]
     ],
-    // reporters: [
-    //     [
-    //         'allure', {
-    //             outputDir: 'allure-results',
-    //             disableWebdriverStepsReporting: false,
-    //             disableWebdriverScreenshotsReporting: false,
-    //             // disableMochaHooks: true,
-    //             // useCucumberStepReporter: true
-    //         }
-    //     ]
-    // ],
     // =====
     // Hooks
     // =====
