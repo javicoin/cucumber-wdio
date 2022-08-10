@@ -1,5 +1,6 @@
 const AllureReporter = require("@wdio/allure-reporter").default;
-
+const Actions = require('../src/actions');
+const Pages = require('../src/pages');
 
 exports.config = {
     //
@@ -203,8 +204,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs) {
+        console.log("Initializing pages & actions...");
+        const platform = capabilities.platformName.toLowerCase();
+        Pages.initPageFiles(platform);
+        Actions.initActionFiles(platform);
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name

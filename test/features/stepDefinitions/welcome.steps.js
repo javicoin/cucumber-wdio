@@ -1,26 +1,27 @@
 const {Given, When, Then} = require('cucumber');
-
-const WelcomeActions = require('../../src/actions/welcome.actions');
-const welcomeActions = new WelcomeActions();
+const Actions = require('../../src/actions');
+const Pages = require('../../src/pages');
+// const WelcomeActions = require('../../src/actions/welcome.actions');
+// const welcomeActions = new WelcomeActions();
 
 Given(/^I launch the app$/, async function () {
-    await welcomeActions.launchApp();
+    await Actions.welcomeActions.launchApp();
 });
 
 Given(/^I open the RSK wallet for the first time$/, async function () {
-	await welcomeActions.launchFreshApp();
+	await Actions.welcomeActions.launchFreshApp();
 });
 
 When(/^I create a new wallet$/, async function () {
-	await welcomeActions.createWallet();
+	await Actions.welcomeActions.createWallet();
 });
 
 When(/^I open Dashboard tab$/, async function () {
-    await welcomeActions.openDashboardTab();
+    await Actions.welcomeActions.openDashboardTab();
 });
 
 When(/^I open Settings tab$/, async function () {
-    await welcomeActions.openSettingsTab();
+    await Actions.welcomeActions.openSettingsTab();
 });
 
 Given(/^I navigate to IOV website$/,async function () {
