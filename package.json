@@ -3,11 +3,12 @@
   "version": "1.0.1",
   "description": "Run native automation for web, android and ios using cucumber wdio with page object pattern",
   "scripts": {
-    "chrome": "wdio ./config/chrome.config.js",
-    "android": "wdio ./config/android.config.js",
-    "ios": "wdio ./config/ios.config.js",
+    "chrome": "wdio ./test/config/chrome.config.js",
+    "android": "wdio ./test/config/android.config.js",
+    "ios": "wdio ./test/config/ios.config.js",
     "lint": "eslint .",
-    "report": "./node_modules/.bin/allure generate --clean './reports/mobile/allure-results' && allure open"
+    "report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
+    "report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
   },
   "keywords": [
     "appium",

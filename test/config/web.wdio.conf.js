@@ -18,7 +18,8 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './src/features/*.feature'
+    // test/features/*LivingDocumentation/*.feature
+        'test/features/*LivingDocumentation/*.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -112,7 +113,7 @@ exports.config = {
         name: [],
         profile: [],
         require: [
-            './src/stepDefinitions/*.steps.js'
+            'test/features/stepDefinitions/*.steps.js'
         ],
         snippetSyntax: undefined,
         snippets: true,
@@ -135,13 +136,13 @@ exports.config = {
     reporters: [
         [
             'cucumberjs-json', {
-                jsonFolder: './reports/web',
+                jsonFolder: './test/reports/web/cucumber',
                 language: 'en',
             }
         ],
         [
             'allure', {
-                outputDir: './reports/web/allure-results',
+                outputDir: './test/reports/web/allure-results',
                 disableWebdriverStepsReporting: true,
                 disableWebdriverScreenshotsReporting: true,
                 useCucumberStepReporter: true,

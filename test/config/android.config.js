@@ -10,7 +10,7 @@ config.capabilities = [
         'appium:automationName': 'UIAutomator2',
         'appium:deviceName': AndroidInfo.deviceName(),
         'appium:platformVersion': AndroidInfo.platFormVersion(),
-        'appium:app': path.resolve(`./apps/${AndroidInfo.appName()}`)
+        'appium:app': path.resolve(`./test/resources/apps/${AndroidInfo.appName()}`)
     }
 ];
 

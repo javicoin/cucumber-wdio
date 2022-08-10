@@ -1,8 +1,8 @@
 {
     "cucumberautocomplete.steps": [
-        "./src/stepDefinitions/*steps.js"
+        "./test/features/stepDefinitions/*steps.js"
     ],
-    "cucumberautocomplete.syncfeatures": "./src/features/*feature",
+    "cucumberautocomplete.syncfeatures": "./test/features/*LivingDocumentation/*.feature",
     "cucumberautocomplete.strictGherkinCompletion": false,
     "cucumberautocomplete.strictGherkinValidation": true,
     "cucumberautocomplete.smartSnippets": true,
@@ -14,5 +14,5 @@
         "strings": true,
         "other": true
     },
-    "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then)\\(",
+    "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then|And)\\(",
 }

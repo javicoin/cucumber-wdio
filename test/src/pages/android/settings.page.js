@@ -1,3 +1,4 @@
+// TODO: this class is just an example to ilustrate usage
 class SettingsPage{
     constructor(){
         this.settingsTitle =

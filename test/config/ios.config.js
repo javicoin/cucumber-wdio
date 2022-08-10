@@ -10,7 +10,7 @@ config.capabilities = [
         'appium:automationName': 'XCUITest',
         'appium:deviceName': IosInfo.deviceName(),
         'appium:platformVersion': IosInfo.platFormVersion(),
-        'appium:app': path.resolve(`./apps/${IosInfo.appName()}`)
+        'appium:app': path.resolve(`./test/resources/apps/${IosInfo.appName()}`)
     }
 ];
 
