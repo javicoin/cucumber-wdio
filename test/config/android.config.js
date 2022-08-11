@@ -10,7 +10,14 @@ config.capabilities = [
         'appium:automationName': 'UIAutomator2',
         'appium:deviceName': AndroidInfo.deviceName(),
         'appium:platformVersion': AndroidInfo.platFormVersion(),
-        'appium:app': path.resolve(`./test/resources/apps/${AndroidInfo.appName()}`)
+        'appium:appPackage':'com.swallet',
+        'appium:appActivity':'com.swallet.MainActivity',
+        // 'appium:app': path.resolve(`./test/resources/apps/${AndroidInfo.appName()}`),
+        'appium:noReset': 'false',
+        'appium:fullReset': 'false',
+        'appium:autoGrantPermissions': 'true'
+        // 'appium:printPageSourceOnFindFailure': 'true',
+        // 'appium:isHeadless': 'true'
     }
 ];
 

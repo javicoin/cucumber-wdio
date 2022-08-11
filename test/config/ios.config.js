@@ -10,7 +10,13 @@ config.capabilities = [
         'appium:automationName': 'XCUITest',
         'appium:deviceName': IosInfo.deviceName(),
         'appium:platformVersion': IosInfo.platFormVersion(),
-        'appium:app': path.resolve(`./test/resources/apps/${IosInfo.appName()}`)
+        'appium:bundleId':'co.rsk.rifwallet.test',
+        //'appium:app': path.resolve(`./test/resources/apps/${IosInfo.appName()}`),
+        'appium:noReset': 'false',
+        'appium:fullReset': 'false',
+        // 'appium:printPageSourceOnFindFailure': 'true',
+        // 'appium:isHeadless': 'true',
+        'appium:autoDismissAlerts': 'true'
     }
 ];
 
