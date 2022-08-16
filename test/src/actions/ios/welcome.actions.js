@@ -10,7 +10,7 @@ class WelcomeActions extends AndroidWelcomeActions {
         // TODO: needs Android/iOS splitting
         await ActionHelper.waitForElement(Pages.welcomePage.masterKey, 3000);
         const masterKey = await ActionHelper.getText(Pages.welcomePage.masterKey);
-        console.log("Master key: " + masterKey);
+        console.log("Master key 1: " + masterKey);
     }
 }
 

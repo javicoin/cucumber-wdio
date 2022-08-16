@@ -10,6 +10,9 @@ npm-debug.log*
 # Dependency directories
 node_modules/
 
+#Config
+test/config/xray/jira.cloud.json
+
 # Reports
 allure-report
 test/reports/

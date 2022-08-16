@@ -2,6 +2,10 @@
   "name": "cucumber-wdio",
   "version": "1.0.1",
   "description": "Run native automation for web, android and ios using cucumber wdio with page object pattern",
+  "repository": {
+    "type": "git",
+    "url": "git://https://github.com/javicoin/cucumber-wdio"
+  },
   "scripts": {
     "chrome": "wdio ./test/config/chrome.config.js",
     "android": "wdio ./test/config/android.config.js",
@@ -30,8 +34,10 @@
     "wdio-chromedriver-service": "^6.0.4"
   },
   "dependencies": {
+    "@xray-app/xray-automation": "^0.2.0",
     "chai": "^4.2.0",
     "cucumber": "^6.0.5",
+    "fix-esm": "^1.0.1",
     "wdio-cucumberjs-json-reporter": "^2.0.4"
   }
 }

@@ -1,0 +1,43 @@
+//const { XrayCloudClient } = require('@xray-app/xray-automation');
+const fs = require('fs');
+const { XrayCloudClient } = require("fix-esm").require('@xray-app/xray-automation');
+
+class XrayReportHelper {
+
+    static async submitTestResults(settings, report, config) {
+        const xrayCloudSettings = XrayReportHelper.processJson(settings);
+        console.log('xrayCloudSettings clientId: ' + xrayCloudSettings.clientId);
+        const xrayClient = new XrayCloudClient(xrayCloudSettings);
+
+        const reportFile = XrayReportHelper.processJson(report);
+        console.log('reportFile: ' + reportFile[0].keyword);
+        
+        const multipartConfig = XrayReportHelper.processJson(config);
+        console.log('multipartConfig: ' + multipartConfig.format);
+        try {
+            console.log('Uploading reports to Jira Xray');
+            let res = await xrayClient.submitResultsMultipart(reportFile, multipartConfig);
+            console.log('Test Execution key: ' + res.key);
+        } catch (e) {
+            console.log(`Failed to upload report to Jira Xray: ${e.message}`);
+            console.log('Test Execution key: ' + res.key);
+        }
+    }
+
+    /**
+     * Returns the content of a given JSON file
+     *
+     * @param {string} file - JSON file path
+     * @returns {Object[]} - JSON file content
+     */
+    static processJson(file) {
+        console.log(`Processing file: ${file}`);
+        const fileContent = fs.readFileSync(file);
+        if (fileContent.length === 0) {
+            console.error(`ERROR! Empty file found: ${file}`);
+        }
+        return JSON.parse(fileContent);
+    }
+}
+
+module.exports = XrayReportHelper;
