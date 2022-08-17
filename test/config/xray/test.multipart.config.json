@@ -1,6 +1,6 @@
 {
   "format": "cucumber",
-  "testExecInfoFile": {
+  "testExecInfo": {
     "fields": {
       "project": {
           "key": "QAATR"

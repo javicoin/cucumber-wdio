@@ -10,6 +10,7 @@
     "chrome": "wdio ./test/config/chrome.config.js",
     "android": "wdio ./test/config/android.config.js",
     "ios": "wdio ./test/config/ios.config.js",
+    "xray": "node ./test/src/helpers/lib/dummyReporter.js",
     "lint": "eslint .",
     "report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
     "report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
