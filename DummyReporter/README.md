@@ -1,0 +1,2 @@
+# Curl command to upload cucumber test results to XRay
+curl -H "Content-Type: multipart/form-data" -X POST -F info=@multipart.config.json -F results=@results.json -H "Authorization: Bearer AUTH_TOKEN_VALUE" https://xray.cloud.getxray.app/api/v2/import/execution/cucumber/multipart
