@@ -120,7 +120,7 @@ exports.config = {
         // <boolean> abort the run on first failure
         failFast: false,
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        format: ['pretty'],
+        format: ['json'],
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false,
         // <string[]> (name) specify the profile to use
@@ -289,7 +289,7 @@ exports.config = {
         const xrayCloudSettings = "./test/config/xray/jira.cloud.json";
         const reportFile = "./test/reports/mobile/cucumber/verify-the-user-can-create-a-new-wallet.json";
         const multipartConfig = "./test/config/xray/test.multipart.config.json";   
-        XrayReportHelper.submitTestResults(xrayCloudSettings, reportFile, multipartConfig);
+        XrayReportHelper.submitTestResults(xrayCloudSettings, reportFile, multipartConfig).catch(console.error);
     },
     /**
      * Gets executed when a refresh happens.

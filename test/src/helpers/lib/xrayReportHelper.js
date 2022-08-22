@@ -4,23 +4,26 @@ const { XrayCloudClient } = require("fix-esm").require('@xray-app/xray-automatio
 
 class XrayReportHelper {
 
-    static async submitTestResults(settings, report, config) {
+    static async submitTestResults(settings, reportFilePath, config) {
         const xrayCloudSettings = XrayReportHelper.processJson(settings);
-        console.log('xrayCloudSettings clientId: ' + xrayCloudSettings.clientId);
-        const xrayClient = new XrayCloudClient(xrayCloudSettings);
-
-        const reportFile = XrayReportHelper.processJson(report);
-        console.log('reportFile: ' + reportFile[0].keyword);
+        // console.log('xrayCloudSettings clientId: ' + xrayCloudSettings.clientId);
+        
+        // const reportFile = XrayReportHelper.processJson(reportFilePath);
+        // console.log('reportFile: ' + reportFile[0].keyword);
         
         const multipartConfig = XrayReportHelper.processJson(config);
-        console.log('multipartConfig: ' + multipartConfig.format);
+        // console.log('multipartConfig: ' + multipartConfig.format);
+
+        let xrayClient;
+        let res;
         try {
             console.log('Uploading reports to Jira Xray');
-            let res = await xrayClient.submitResultsMultipart(reportFile, multipartConfig);
+            xrayClient = new XrayCloudClient(xrayCloudSettings);
+            res = await xrayClient.submitResultsMultipart(reportFilePath, multipartConfig);
             console.log('Test Execution key: ' + res.key);
         } catch (e) {
-            console.log(`Failed to upload report to Jira Xray: ${e.message}`);
-            console.log('Test Execution key: ' + res.key);
+            console.log(`Failed to upload report to Jira Xray: ${e.stack}`);
+            throw e;
         }
     }
 

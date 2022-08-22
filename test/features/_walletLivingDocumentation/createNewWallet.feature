@@ -1,6 +1,9 @@
+#Test Execution ID
+@QAATR-1284
 Feature: Verify the user can create a new wallet
 
-  @android @ios
+#TestCase ID
+@TEST_QAATR-1283 @android @ios
   Scenario: Verify the user can create a new wallet
     Given I open the RSK wallet for the first time
     When I create a new wallet

@@ -8,7 +8,9 @@ class WelcomePage {
         rightNavigationArrow =
             '~buttonRight';
         masterKey =
-            '//XCUIElementTypeStaticText[@name="word1"]';
+            '~wordWrapper1';
+        masterKey1 =
+            '~word1';
 }
 
 module.exports = WelcomePage;

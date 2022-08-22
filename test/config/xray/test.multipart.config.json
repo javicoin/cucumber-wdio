@@ -6,10 +6,17 @@
           "key": "QAATR"
       },
       "summary": "Test Execution for Cucumber tests",
+      "issuetype": {
+        "name": "Test Execution"
+      },
       "description": "This contains test automation results",
       "customfield_10030" : [
         "iOS", "Android"
       ]
+    },
+    "xrayFields": {
+      "testPlanKey": "QAATR-1282",
+      "environments": ["iOS", "Android"]
     }
   }
 }
