@@ -7,12 +7,23 @@ const AndroidWelcomeActions = require('../android/welcome.actions');
 class WelcomeActions extends AndroidWelcomeActions {
 
     async storeMasterKey() {
-        // TODO: needs Android/iOS splitting
-        await ActionHelper.waitForElement(Pages.welcomePage.masterKey, 3000);
-        const masterKey = await ActionHelper.getText(Pages.welcomePage.masterKey);
-        const masterKey1 = await ActionHelper.getText(Pages.welcomePage.masterKey1);
-        console.log("Master key: " + masterKey);
-        console.log("Master key 1: " + masterKey1);
+        // TODO: might need Android/iOS splitting
+        console.log("Master key\n");
+        let wordList = '';
+        let wordText1 = '';;
+        let wordText2 = '';
+        let wordText3 = '';
+        for (let i = 1; i <= 8; i++) {
+            wordList = await $$(Pages.welcomePage.wordList);
+            wordText1 = (await ActionHelper.getText(wordList[0])).split(' ')[1];
+            wordText2 = (await ActionHelper.getText(wordList[1])).split(' ')[1];
+            wordText3 = (await ActionHelper.getText(wordList[2])).split(' ')[1];
+            console.log(`Word${1+3*(i-1)} = ${wordText1}\n`);
+            console.log(`Word${2+3*(i-1)} = ${wordText2}\n`);
+            console.log(`Word${3+3*(i-1)} = ${wordText3}\n`);
+            await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
+            // TODO: store words into json db
+        }
     }
 }
 

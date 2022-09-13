@@ -7,10 +7,10 @@ class WelcomePage {
             '~secureNow';
         rightNavigationArrow =
             '~buttonRight';
-        masterKey =
-            '~wordWrapper1';
-        masterKey1 =
-            '~word1';
+        masterKeyTitle =
+            '~Your Master Key';
+        wordList =
+            '//XCUIElementTypeStaticText[contains(@label,"word")]';
 }
 
 module.exports = WelcomePage;
