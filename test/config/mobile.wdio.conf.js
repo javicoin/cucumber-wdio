@@ -285,12 +285,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    onComplete: function(exitCode, config, capabilities, results) {
-        const xrayCloudSettings = "./test/config/xray/jira.cloud.json";
-        const reportFile = "./test/reports/mobile/cucumber/verify-the-user-can-create-a-new-wallet.json";
-        const multipartConfig = "./test/config/xray/test.multipart.config.json";   
-        XrayReportHelper.submitTestResults(xrayCloudSettings, reportFile, multipartConfig).catch(console.error);
-    },
+    // onComplete: function(exitCode, config, capabilities, results) {
+    //     const xrayCloudSettings = "./test/config/xray/jira.cloud.json";
+    //     const reportFile = "./test/reports/mobile/cucumber/verify-the-user-can-create-a-new-wallet.json";
+    //     const multipartConfig = "./test/config/xray/test.multipart.config.json";   
+    //     XrayReportHelper.submitTestResults(xrayCloudSettings, reportFile, multipartConfig).catch(console.error);
+    // },
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session

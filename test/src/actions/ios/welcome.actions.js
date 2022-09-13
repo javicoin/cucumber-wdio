@@ -1,8 +1,8 @@
 const ActionHelper = require('../../helpers/actionHelper');
-const Actions = require('../../actions');
+// const Actions = require('../../actions');
 const Pages = require('../../pages');
 const AndroidWelcomeActions = require('../android/welcome.actions');
-require('chai').should();
+// require('chai').should();
 
 class WelcomeActions extends AndroidWelcomeActions {
 

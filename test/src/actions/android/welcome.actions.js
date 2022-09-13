@@ -1,7 +1,7 @@
 const ActionHelper = require('../../helpers/actionHelper');
-const Actions = require('../../actions');
 const Pages = require('../../pages');
-require('chai').should();
+// const Actions = require('../../actions');
+// require('chai').should();
 
 class WelcomeActions {
 
@@ -13,7 +13,7 @@ class WelcomeActions {
 
     async launchFreshApp() {
         await ActionHelper.launchApp();
-        //await ActionHelper.launchFreshApp();
+        // await ActionHelper.launchFreshApp();
         await ActionHelper.switchToNativeContext();
         await ActionHelper.pause();
     }
@@ -33,13 +33,26 @@ class WelcomeActions {
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
+        await ActionHelper.waitForElement(Pages.welcomePage.masterKeyTitle, 3000);
     }
 
     async storeMasterKey() {
-        // TODO: needs Android/iOS splitting
-        await ActionHelper.waitForElement(Pages.welcomePage.masterKey, 3000);
-        const masterKey = await ActionHelper.getText(Pages.welcomePage.masterKey);
-        console.log("Master key: " + masterKey);
+        console.log("Master key\n");
+        let wordList = '';
+        let wordText1 = '';;
+        let wordText2 = '';
+        let wordText3 = '';
+        for (let i = 1; i <= 8; i++) {
+            wordList = await $$(Pages.welcomePage.wordList);
+            wordText1 = await ActionHelper.getText(wordList[0]);
+            wordText2 = await ActionHelper.getText(wordList[1]);
+            wordText3 = await ActionHelper.getText(wordList[2]);
+            console.log(`Word${1+3*(i-1)} = ${wordText1}\n`);
+            console.log(`Word${2+3*(i-1)} = ${wordText2}\n`);
+            console.log(`Word${3+3*(i-1)} = ${wordText3}\n`);
+            await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
+            // TODO: store words into json db
+        }    
     }
 }
 
