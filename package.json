@@ -12,8 +12,8 @@
     "ios": "wdio ./test/config/ios.config.js",
     "xray": "node ./DummyReporter/dummyReporter.js",
     "lint": "eslint .",
-    "report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
-    "report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
+    "allure_report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
+    "allure_report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
   },
   "keywords": [
     "appium",
@@ -39,6 +39,7 @@
     "chai": "^4.2.0",
     "cucumber": "^6.0.5",
     "fix-esm": "^1.0.1",
+    "multiple-cucumber-html-reporter": "^2.0.0",
     "wdio-cucumberjs-json-reporter": "^2.0.4"
   }
 }

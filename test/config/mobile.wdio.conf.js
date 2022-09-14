@@ -1,4 +1,5 @@
 const XrayReportHelper = require('../src/helpers/lib/xrayReportHelper');
+const { generate } = require('multiple-cucumber-html-reporter');
 const Actions = require('../src/actions');
 const Pages = require('../src/pages');
 
@@ -120,7 +121,7 @@ exports.config = {
         // <boolean> abort the run on first failure
         failFast: false,
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
-        format: ['json'],
+        format: ['json', 'html'],
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false,
         // <string[]> (name) specify the profile to use
@@ -150,7 +151,7 @@ exports.config = {
     reporters: [
         [
             'cucumberjs-json', {
-                jsonFolder: './test/reports/mobile/cucumber',
+                jsonFolder: './test/reports/mobile/cucumber/json',
                 language: 'en',
             }
         ],
@@ -285,12 +286,22 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
+     onComplete: function(exitCode, config, capabilities, results) {
+    // XRAY test results upload 
     //     const xrayCloudSettings = "./test/config/xray/jira.cloud.json";
-    //     const reportFile = "./test/reports/mobile/cucumber/verify-the-user-can-create-a-new-wallet.json";
+    //     const reportFile = "./test/reports/mobile/cucumber/json/verify-the-user-can-create-a-new-wallet.json";
     //     const multipartConfig = "./test/config/xray/test.multipart.config.json";   
     //     XrayReportHelper.submitTestResults(xrayCloudSettings, reportFile, multipartConfig).catch(console.error);
-    // },
+        // Generate the report when it all tests are done
+    generate({
+        // Required
+        // This part needs to be the same path where you store the JSON files
+        // default = '.tmp/json/'
+        jsonDir: './test/reports/mobile/cucumber/json/',
+        reportPath: './test/reports/mobile/cucumber/html/',
+        // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+      });
+    },
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session
