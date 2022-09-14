@@ -1,7 +1,6 @@
 class Pages {
 
     static welcomePage;
-    static flightSearchPage;
 
     static initPageFiles(platform) {
         // How to include android/ios version:

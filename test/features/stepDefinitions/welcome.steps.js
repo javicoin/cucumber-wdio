@@ -1,8 +1,5 @@
 const {Given, When, Then} = require('cucumber');
 const Actions = require('../../src/actions');
-const Pages = require('../../src/pages');
-// const WelcomeActions = require('../../src/actions/welcome.actions');
-// const welcomeActions = new WelcomeActions();
 
 Given(/^I launch the app$/, async function () {
     await Actions.welcomeActions.launchApp();
