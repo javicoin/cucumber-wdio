@@ -1,7 +1,7 @@
 // const { XrayCloudClient } = require('@xray-app/xray-automation');
 const fs = require('fs');
 const { XrayCloudClient } = require("fix-esm").require('@xray-app/xray-automation');
-const xrayCloudSettings = "./test/config/xray/jira.cloud.json";
+const xrayCloudSettings = './test/config/xray/jira.cloud.json';
 const reportFile = './DummyReporter/results.json';
 const multipartConfig = './DummyReporter/multipart.config.json';   
 

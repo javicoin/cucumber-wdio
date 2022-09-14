@@ -1,7 +1,7 @@
 const ActionHelper = require('../../helpers/actionHelper');
+const FilesHelper = require('../../helpers/filesHelper');
 const Pages = require('../../pages');
-// const Actions = require('../../actions');
-// require('chai').should();
+const walletData = './test/resources/files/walletData.json';
 
 class WelcomeActions {
 
@@ -37,7 +37,7 @@ class WelcomeActions {
     }
 
     async storeMasterKey() {
-        console.log("Master key\n");
+        const masterKey = [];
         let wordList = '';
         let wordText1 = '';;
         let wordText2 = '';
@@ -47,12 +47,13 @@ class WelcomeActions {
             wordText1 = await ActionHelper.getText(wordList[0]);
             wordText2 = await ActionHelper.getText(wordList[1]);
             wordText3 = await ActionHelper.getText(wordList[2]);
-            console.log(`Word${1+3*(i-1)} = ${wordText1}\n`);
-            console.log(`Word${2+3*(i-1)} = ${wordText2}\n`);
-            console.log(`Word${3+3*(i-1)} = ${wordText3}\n`);
+            // console.log(`Word${1+3*(i-1)} = ${wordText1}\n`);
+            // console.log(`Word${2+3*(i-1)} = ${wordText2}\n`);
+            // console.log(`Word${3+3*(i-1)} = ${wordText3}\n`);
+            masterKey.push(wordText1, wordText2, wordText3);
             await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
-            // TODO: store words into json db
-        }    
+        }
+        FilesHelper.editJsonByKey(walletData, "masterKey", masterKey);
     }
 }
 

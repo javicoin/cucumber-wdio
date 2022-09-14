@@ -1,3 +1,4 @@
+// This class is deprecated and just used for future possible functionalities
 require('chai').should();
 
 const SELECTORS = {
