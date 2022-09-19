@@ -1,46 +1,26 @@
-//const { XrayCloudClient } = require('@xray-app/xray-automation');
-const fs = require('fs');
 const { XrayCloudClient } = require("fix-esm").require('@xray-app/xray-automation');
+const FilesHelper = require('../../helpers/filesHelper');
 
-class XrayReportHelper {
+const settings = "./test/config/xray/jira.cloud.json";
+const results = "./test/reports/mobile/cucumber/json/verify-the-user-can-create-a-new-wallet.json";       
+const multipartConfig = "./test/config/xray/cucumber.multipart.config.json";
 
-    static async submitTestResults(settings, reportFilePath, config) {
-        const xrayCloudSettings = XrayReportHelper.processJson(settings);
-        // console.log('xrayCloudSettings clientId: ' + xrayCloudSettings.clientId);
-        
-        // const reportFile = XrayReportHelper.processJson(reportFilePath);
-        // console.log('reportFile: ' + reportFile[0].keyword);
-        
-        const multipartConfig = XrayReportHelper.processJson(config);
-        // console.log('multipartConfig: ' + multipartConfig.format);
-
-        let xrayClient;
-        let res;
-        try {
-            console.log('Uploading reports to Jira Xray');
-            xrayClient = new XrayCloudClient(xrayCloudSettings);
-            res = await xrayClient.submitResultsMultipart(reportFilePath, multipartConfig);
-            console.log('Test Execution key: ' + res.key);
-        } catch (e) {
-            console.log(`Failed to upload report to Jira Xray: ${e.stack}`);
-            throw e;
-        }
-    }
-
-    /**
-     * Returns the content of a given JSON file
-     *
-     * @param {string} file - JSON file path
-     * @returns {Object[]} - JSON file content
-     */
-    static processJson(file) {
-        console.log(`Processing file: ${file}`);
-        const fileContent = fs.readFileSync(file);
-        if (fileContent.length === 0) {
-            console.error(`ERROR! Empty file found: ${file}`);
-        }
-        return JSON.parse(fileContent);
+async function submitTestResults(settings, resultsFile, config) {
+    const xrayCloudSettings = FilesHelper.processJson(settings);        
+    const multipartConfig = FilesHelper.processJson(config);
+    
+    let xrayClient;
+    let response;
+    try {
+        console.log('Uploading reports to Jira Xray...');
+        xrayClient = new XrayCloudClient(xrayCloudSettings);
+        response = await xrayClient.submitResultsMultipart(resultsFile, multipartConfig);
+        console.log('Test Execution created: ' + response.key);
+    } catch (error) {
+        console.log('Failed to upload report to Jira Xray\n');
+        throw new Error("Failed to upload report to Jira Xray\n: " + error.stack);
     }
 }
 
-module.exports = XrayReportHelper;
+submitTestResults(settings, results, multipartConfig)
+    .catch(console.error);

@@ -44,12 +44,12 @@ class ActionHelper {
     static async click(locator) {
         try {
             const elem = await $(locator);
-            await elem.waitForDisplayed({ timeout: 3000 });
+            await elem.waitForDisplayed({ timeout: 300 });
             await elem.click();
-            await driver.pause(100);
+            await driver.pause(50);
         } catch (error) {
             console.log("Error while clicking on element: " + error);
-            throw new Exception("Error while clicking on element: " + error);
+            throw new Error("Error while clicking on element: " + error);
         }
     }
 
@@ -60,13 +60,13 @@ class ActionHelper {
      * @param waitTimeInMiliSeconds
      *
      */
-    static async waitForElement(locator, waitTimeInMiliSeconds = 1000) {
+    static async waitForElement(locator, waitTimeInMiliSeconds = 300) {
         try{
             const elem = await $(locator);
             await elem.waitForDisplayed(waitTimeInMiliSeconds);
         } catch (error) {
             console.log("Element not displayed: " + error);
-            throw new Exception("Element not displayed: " + error);
+            throw new Error("Element not displayed: " + error);
         }
     }
 
@@ -92,11 +92,11 @@ class ActionHelper {
     static async swipe (from, to) {
         await driver.touchPerform([
             { action: 'press', options: from},
-            { action: 'wait', options: { ms: 5000 },},
+            { action: 'wait', options: { ms: 1000 },},
             { action: 'moveTo', options: to},
             { action: 'release' }
         ]);
-        await driver.pause(1000)
+        await driver.pause(200)
     }
 }
 

@@ -10,7 +10,7 @@
     "chrome": "wdio ./test/config/chrome.config.js",
     "android": "wdio ./test/config/android.config.js",
     "ios": "wdio ./test/config/ios.config.js",
-    "xray": "node ./DummyReporter/dummyReporter.js",
+    "xray_results_upload": "node ./test/src/helpers/lib/xrayReportHelper.js",
     "lint": "eslint .",
     "allure_report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
     "allure_report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
@@ -35,7 +35,7 @@
     "wdio-chromedriver-service": "^6.0.4"
   },
   "dependencies": {
-    "@xray-app/xray-automation": "^0.2.0",
+    "@xray-app/xray-automation": "git+https://github.com/javicoin/xray-automation-js.git",
     "chai": "^4.2.0",
     "cucumber": "^6.0.5",
     "fix-esm": "^1.0.1",

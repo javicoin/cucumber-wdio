@@ -9,10 +9,7 @@
       "issuetype": {
         "name": "Test Execution"
       },
-      "description": "This contains test automation results",
-      "customfield_10030" : [
-        "iOS", "Android"
-      ]
+      "description": "This contains test automation results"
     },
     "xrayFields": {
       "testPlanKey": "QAATR-1282",

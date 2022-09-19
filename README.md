@@ -71,3 +71,5 @@ Follow the below commands
 - Execute `npm run ios` or `ios` script to run ios native app
 
 - Execute `npm run lint` or `lint` script to run eslint
+
+- Execute `npm run xray_results_upload` or `xray_results_upload` script to upload executed test results to Jira (you need Jira credentials for the matter)

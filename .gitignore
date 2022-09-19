@@ -16,9 +16,6 @@ test/config/xray/jira.cloud.json
 #Resources
 test/resources/
 
-#Temp
-DummyReporter/
-
 # Reports
 allure-report
 test/reports/
