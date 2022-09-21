@@ -3,7 +3,7 @@
   "testExecInfo": {
     "fields": {
       "project": {
-          "key": "QAATR"
+        "key": "QAATR"
       },
       "summary": "Test Execution for Cucumber tests",
       "issuetype": {
@@ -13,7 +13,9 @@
     },
     "xrayFields": {
       "testPlanKey": "QAATR-1282",
-      "environments": ["iOS", "Android"]
+      "environments": [
+        "Android"
+      ]
     }
   }
 }

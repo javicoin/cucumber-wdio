@@ -44,7 +44,7 @@ class ActionHelper {
     static async click(locator) {
         try {
             const elem = await $(locator);
-            await elem.waitForDisplayed({ timeout: 300 });
+            await elem.waitForDisplayed({ timeout: 1000 });
             await elem.click();
             await driver.pause(50);
         } catch (error) {
@@ -60,7 +60,7 @@ class ActionHelper {
      * @param waitTimeInMiliSeconds
      *
      */
-    static async waitForElement(locator, waitTimeInMiliSeconds = 300) {
+    static async waitForElement(locator, waitTimeInMiliSeconds = 1000) {
         try{
             const elem = await $(locator);
             await elem.waitForDisplayed(waitTimeInMiliSeconds);

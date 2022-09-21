@@ -4,23 +4,23 @@ class FilesHelper {
     /**
      * Returns the content of a given JSON file
      *
-     * @param {string} file - JSON file path
+     * @param {string} jsonFile - JSON file path
      * @returns {Object[]} - JSON file content
      */
-    static processJson(file) {
-        console.log(`Processing file: ${file}`);
-        const fileContent = fs.readFileSync(file);
+    static processJson(jsonFile) {
+        console.log(`Processing file: ${jsonFile}`);
+        const fileContent = fs.readFileSync(jsonFile);
         if (fileContent.length === 0) {
-            console.error(`ERROR! Empty file found: ${file}`);
+            console.error(`ERROR! Empty file found: ${jsonFile}`);
         }
         return JSON.parse(fileContent);
     }
 
-    static editJsonByKey(json, key, value) {
+    static editJsonByKey(jsonFile, key, value) {
         try {
-            let file = FilesHelper.processJson(json);
+            let file = FilesHelper.processJson(jsonFile);
             file[key] = value;
-            fs.writeFileSync(json, JSON.stringify(file));
+            fs.writeFileSync(jsonFile, JSON.stringify(file));
         } catch (error) {
             throw new Error(error);
         }

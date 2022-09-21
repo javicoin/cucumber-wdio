@@ -17,8 +17,7 @@ async function submitTestResults(settings, resultsFile, config) {
         response = await xrayClient.submitResultsMultipart(resultsFile, multipartConfig);
         console.log('Test Execution created: ' + response.key);
     } catch (error) {
-        console.log('Failed to upload report to Jira Xray\n');
-        throw new Error("Failed to upload report to Jira Xray\n: " + error.stack);
+        throw new Error("Failed to upload report to Jira Xray\n: " + JSON.stringify(error));
     }
 }
 
