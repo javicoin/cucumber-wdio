@@ -12,6 +12,7 @@ node_modules/
 
 #Config
 test/config/xray/jira.cloud.json
+test/config/xray/cucumber.multipart.config.json
 
 #Resources
 test/resources/
