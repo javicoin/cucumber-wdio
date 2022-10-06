@@ -7,13 +7,17 @@
     "url": "git://https://github.com/javicoin/cucumber-wdio"
   },
   "scripts": {
-    "chrome": "wdio ./test/config/chrome.config.js",
-    "android": "wdio ./test/config/android.config.js",
-    "ios": "wdio ./test/config/ios.config.js",
-    "export_xray_results": "node ./test/src/helpers/lib/xrayReportHelper.js",
+    "chrome": "wdio ./test/config/chrome.conf.js",
+    "android_local": "wdio ./test/config/android.conf.js",
+    "android_browserstack": "wdio ./test/config/android.bs.conf.js",
+    "ios_local": "wdio ./test/config/ios.conf.js",
+    "ios_browserstack": "wdio ./test/config/ios.bs.conf.js",
     "lint": "eslint .",
     "allure_report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
-    "allure_report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open"
+    "allure_report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open",
+    "submit_cucumber_results": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults ./test/config/xray/jira.cloud.json ./test/reports/mobile/cucumber/json/verify-the-user-can-create-a-new-wallet.json ./test/config/xray/cucumber.multipart.config.json",
+    "download_cucumber_features": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js downloadCucumberFeatures ./test/config/xray/jira.cloud.json ./test/config/xray/cucumberConfig.json",
+    "upload_cucumber_features": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures ./test/config/xray/jira.cloud.json ./test/config/xray/cucumberConfig.json"
   },
   "keywords": [
     "appium",
@@ -27,6 +31,7 @@
   "devDependencies": {
     "@wdio/allure-reporter": "^6.11.0",
     "@wdio/appium-service": "^6.1.0",
+    "@wdio/browserstack-service": "^7.25.1",
     "@wdio/cli": "^6.1.12",
     "@wdio/cucumber-framework": "^6.11.1",
     "@wdio/local-runner": "^6.1.12",

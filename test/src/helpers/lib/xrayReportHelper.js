@@ -1,11 +1,7 @@
 const { XrayCloudClient } = require("fix-esm").require('@xray-app/xray-automation');
 const FilesHelper = require('../../helpers/filesHelper');
 
-const settings = "./test/config/xray/jira.cloud.json";
-const results = "./test/reports/mobile/cucumber/json/verify-the-user-can-create-a-new-wallet.json";       
-const multipartConfig = "./test/config/xray/cucumber.multipart.config.json";
-
-async function submitTestResults(settings, resultsFile, config) {
+async function submitCucumberTestResults(settings, resultsFile, config) {
     const xrayCloudSettings = FilesHelper.processJson(settings);        
     const multipartConfig = FilesHelper.processJson(config);
     
@@ -21,5 +17,32 @@ async function submitTestResults(settings, resultsFile, config) {
     }
 }
 
-submitTestResults(settings, results, multipartConfig)
-    .catch(console.error);
+async function downloadCucumberFeatures(settings, config) {
+    const xrayCloudSettings = FilesHelper.processJson(settings);        
+    const cucumberConfig = FilesHelper.processJson(config);
+    
+    let xrayClient;
+    let response;
+   
+    console.log('Downloading Cucumber features from Jira XRay...');
+    xrayClient = new XrayCloudClient(xrayCloudSettings);
+    response = await xrayClient.downloadCucumberFeatures(cucumberConfig).catch(console.error);
+    console.log('Features created on: ' + cucumberConfig.featuresPath);
+}
+
+async function uploadCucumberFeatures(settings, config) {
+    const xrayCloudSettings = FilesHelper.processJson(settings);        
+    const cucumberConfig = FilesHelper.processJson(config);
+    
+    let xrayClient;
+    let response;
+    
+    console.log('Uploading Cucumber features to Jira XRay...');
+    xrayClient = new XrayCloudClient(xrayCloudSettings);
+    response = await xrayClient.uploadCucumberFeatures(cucumberConfig).catch(console.error);
+
+}
+
+module.exports.submitCucumberTestResults =  submitCucumberTestResults;
+module.exports.downloadCucumberFeatures =  downloadCucumberFeatures;
+module.exports.uploadCucumberFeatures =  uploadCucumberFeatures;

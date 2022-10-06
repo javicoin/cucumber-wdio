@@ -20,6 +20,8 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - Contains sample test scenarios in cucumber
 - Page Object Model
 - Allure html reports
+- Jira XRay integration (It's possible to download/upload cucumber tests & test executions creation)
+- Browserstack integration
 
 
 ## Additional requirements
@@ -44,8 +46,11 @@ For iOS
 - XCode Command Line Tools
 - iOS simulators
 
+## Browserstack
+BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the /test/config folder. You just need to provide your BrowserStack credentials in the config file. To run test on BrowserStack npm run `android_browserstack` or `ios_browserstack` scripts.
 
-## Source
+
+## Sources
 
 Click below to know more 
 - [Appium Introduction](http://appium.io/docs/en/about-appium/intro/)
