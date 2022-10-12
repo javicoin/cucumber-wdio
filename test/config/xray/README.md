@@ -13,6 +13,8 @@ curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer $token
 rm -rf features/*.feature
 unzip -o features.zip -d features
 
+curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnQiOiI1NTViNzk5Yi1hOTU5LTMwZmEtYWNkYi0zMzUyNGYxNDhjMDgiLCJhY2NvdW50SWQiOiI2MzQ0MTY5OTNmNDIyNGE0NmRiMWY4YmMiLCJpc1hlYSI6ZmFsc2UsImlhdCI6MTY2NTQ4NjQ0OCwiZXhwIjoxNjY1NTcyODQ4LCJhdWQiOiJBNDFFMzJFMjk1MUE0NDlFODcwOUMwMTJCRjJBNkZGNyIsImlzcyI6ImNvbS54cGFuZGl0LnBsdWdpbnMueHJheSIsInN1YiI6IkE0MUUzMkUyOTUxQTQ0OUU4NzA5QzAxMkJGMkE2RkY3In0.W9UtyQYm1WtEUVoTe0Dw70vl1IU0rwpwvC29Uk6skMM" "https://xray.cloud.getxray.app/api/v2/export/cucumber?filter=11413" -o features.zip
+
 
 # Curl command to import (upload) cucumber test features to XRay
 #!/bin/bash
