@@ -81,10 +81,10 @@ exports.config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 20000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 2,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -120,7 +120,7 @@ exports.config = {
         source: true,
         strict: false,
         tagsInTitle: false,
-        timeout: 50000,
+        timeout: 20000,
         retry: 0
     },
     //

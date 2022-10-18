@@ -2,7 +2,7 @@
 
 Run native automation for web (browser) & mobile (android and ios) using cucumber-wdio with page object pattern.
 
-## Based on
+## Based on (Beware of mandatory versions)
 
 - WebdriverIO v6
 - Cucumber v6
@@ -26,7 +26,6 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 
 ## Additional requirements
 
-- Java JDK 11
 - [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
 - [Appium inspector](https://github.com/appium/appium-inspector/releases)
 - [Appium doctor](https://www.npmjs.com/package/appium-doctor)
@@ -46,6 +45,8 @@ For iOS
 - XCode Command Line Tools
 - iOS simulators
 
+To ensure everything is install properly
+-  Run `appium-inspector` in your terminal
 
 ## Sources
 
