@@ -69,6 +69,8 @@ Follow the below commands
 - Update the deviceName and platFormVersion in `config/android.device.info.js` and `config/ios.device.info.js` respectively. 
   For Android, it's mandatory to have the emulator configured & running before launching the tests, for iOS just a configured emulator is enough.
 
+To visualize NPM Scripts view go to View -> Open View... -> NPM Scripts
+
 - Execute `npm run android` or `android` script to run android native app
 
 - Execute `npm run ios` or `ios` script to run ios native app
