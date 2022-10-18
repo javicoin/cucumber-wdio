@@ -97,7 +97,8 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     services: [
         ['appium', {
-            command: 'appium',
+            //command: 'appium',
+            logPath : './logs_appium'
         }]
     ],
     port: 4723,

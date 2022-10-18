@@ -30,7 +30,7 @@
   "license": "ISC",
   "devDependencies": {
     "@wdio/allure-reporter": "^6.11.0",
-    "@wdio/appium-service": "^6.1.0",
+    "@wdio/appium-service": "^7.25.1",
     "@wdio/browserstack-service": "^7.25.1",
     "@wdio/cli": "^6.1.12",
     "@wdio/cucumber-framework": "^6.11.1",

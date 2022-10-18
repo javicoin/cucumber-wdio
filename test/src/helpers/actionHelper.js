@@ -46,7 +46,7 @@ class ActionHelper {
             const elem = await $(locator);
             await elem.waitForDisplayed({ timeout: 1000 });
             await elem.click();
-            await driver.pause(50);
+            await driver.pause(100);
         } catch (error) {
             console.log("Error while clicking on element: " + error);
             throw new Error("Error while clicking on element: " + error);

@@ -1,4 +1,4 @@
-const {config} = require('./mobile.wdio.conf');
+const {config} = require('./mobile.wdio.local.conf');
 const IosInfo = require('./ios.device.info');
 const path = require('path');
 
