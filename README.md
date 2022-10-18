@@ -45,7 +45,7 @@ For iOS
 - XCode Command Line Tools
 - iOS simulators
 
-To ensure everything is install properly
+To ensure everything is installed properly
 -  Run `appium-inspector` in your terminal
 
 ## Sources
