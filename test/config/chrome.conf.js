@@ -1,5 +1,4 @@
 const {config} = require('./web.wdio.conf');
-const path = require('path');
 
 config.capabilities = [
     {

@@ -1,4 +1,3 @@
-const { generate } = require('multiple-cucumber-html-reporter');
 const Actions = require('../src/actions');
 const Pages = require('../src/pages');
 const FilesHelper = require('../src/helpers/filesHelper');
@@ -97,7 +96,7 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
     services: [
         ['appium', {
-            //command: 'appium',
+            command: 'appium',
             logPath : './logs_appium'
         }]
     ],
@@ -289,13 +288,6 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
     onComplete: function(exitCode, config, capabilities, results) {
-        // generate({
-        //     // Required
-        //     // This part needs to be the same path where you store the JSON files
-        //     jsonDir: './test/reports/mobile/cucumber/json/',
-        //     reportPath: './test/reports/mobile/cucumber/html/',
-        //     // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
-        // });
         const multipartConfig = './test/config/xray/cucumber.multipart.config.json';
         const platform = [capabilities[0].platformName];
         try {
