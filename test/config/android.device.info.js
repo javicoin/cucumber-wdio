@@ -1,10 +1,10 @@
 class AndroidInfo {
     static deviceName() {
-        return 'Pixel_5_API_31'; // pass the udid or devicename
+        return 'Pixel_5_API_33'; // pass the udid or devicename
     }
 
     static platFormVersion() {
-        return '12'; // pass the platform version
+        return '13'; // pass the platform version
     }
 
     static appName() {
