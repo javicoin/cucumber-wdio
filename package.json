@@ -16,7 +16,7 @@
     "allure_report_mobile": "./node_modules/.bin/allure generate --clean './test/reports/mobile/allure-results' && allure open",
     "allure_report_web": "./node_modules/.bin/allure generate --clean './test/reports/web/allure-results' && allure open",
     "submit_cucumber_results": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults ./test/config/xray/jira.cloud.json ./test/reports/mobile/cucumber/json/verify-the-user-can-create-a-new-wallet.json ./test/config/xray/cucumber.multipart.config.json",
-    "download_cucumber_features": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js downloadCucumberFeatures ./test/config/xray/jira.cloud.json ./test/config/xray/cucumberConfig.json",
+    "download_cucumber_features": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js processDownloadFeatures ./test/config/xray/jira.cloud.json ./test/config/xray/cucumberConfig.json",
     "upload_cucumber_features": "npx run-func ./test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures ./test/config/xray/jira.cloud.json ./test/config/xray/cucumberConfig.json"
   },
   "keywords": [

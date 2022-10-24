@@ -8,7 +8,6 @@ class FilesHelper {
      * @returns {Object[]} - JSON file content
      */
     static processJson(jsonFile) {
-        console.log(`Processing file: ${jsonFile}`);
         const fileContent = fs.readFileSync(jsonFile);
         if (fileContent.length === 0) {
             console.error(`ERROR! Empty file found: ${jsonFile}`);

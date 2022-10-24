@@ -2,7 +2,16 @@
 
 Run native automation for web (browser) & mobile (android and ios) using cucumber-wdio with page object pattern.
 
-## Based on (Beware of mandatory versions)
+## Supports
+
+- Native/Hybrid Android & iOS apps, web browsers
+- Contains sample test scenarios in cucumber
+- Page Object Model
+- Allure html reports
+- Jira XRay integration (It's possible to download/upload cucumber tests & test executions creation)
+- Browserstack integration
+
+## Installation guide (Beware of mandatory versions)
 
 - WebdriverIO v6
 - Cucumber v6
@@ -13,22 +22,33 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - UIAutomator2 driver, execute `appium driver install uiautomator2` or `appium driver update uiautomator2`, current version 2.9.0
 - XCUITest, execute `appium driver install xcuitest` or `appium driver update xcuitest`, current version 4.12.1
 - Browser drivers (chromedriver)
+- [Appium inspector](https://github.com/appium/appium-inspector/releases)
+- [Appium doctor](https://www.npmjs.com/package/appium-doctor)
 
-## Supports
+To ensure everything is installed properly
+-  Run `appium-inspector` in your terminal
 
-- Native/Hybrid Android & iOS apps, web browsers
-- Contains sample test scenarios in cucumber
-- Page Object Model
-- Allure html reports
-- Jira XRay integration (It's possible to download/upload cucumber tests & test executions creation)
-- Browserstack integration
+## Environment variables config
+- Edit your `~/.zshrc` (or bash_profile), the environment variables should look like:
 
+```
+
+export JAVA_HOME=$HOME/OpenJDK/jdk-18.0.1.1.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export BROWSERSTACK_USERNAME="XXX"
+export BROWSERSTACK_ACCESS_KEY="YYY"
+
+```
 
 ## Additional requirements
 
 - [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
-- [Appium inspector](https://github.com/appium/appium-inspector/releases)
-- [Appium doctor](https://www.npmjs.com/package/appium-doctor)
+
 - [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
 - [Appium driver XCUITest repository](https://github.com/appium/appium-xcuitest-driver#desired-capabilities)
 - [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
@@ -44,9 +64,6 @@ For iOS
 - XCode
 - XCode Command Line Tools
 - iOS simulators
-
-To ensure everything is installed properly
--  Run `appium-inspector` in your terminal
 
 ## Sources
 
