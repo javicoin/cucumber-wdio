@@ -16,7 +16,7 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - WebdriverIO v6
 - Cucumber v6
 - Node version 16, execute `npm install -g node@16.15.1`
-- NPM version 6, execute `npm install -g npm@latest`, currently 8.19.2
+- NPM version 8, execute `npm install -g npm@latest`, currently 8.19.2
 - JAVA JDK 11, execute `brew tap homebrew/cask-versions` and `brew install --cask zulu11`
 - Appium 2.0.0, execute `npm i -g appium@next`, currently v2.0.0-beta.46 (to install a new appium version, first uninstall the existing one by `npm uninstall -g appium`)
 - UIAutomator2 driver, execute `appium driver install uiautomator2` or `appium driver update uiautomator2`, current version 2.9.0
