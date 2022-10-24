@@ -82,6 +82,7 @@ Follow the below commands
 - Clone the project - `https://github.com/javicoin/cucumber-wdio.git`.
 
 - Install dependencies using `npm i` in the terminal.
+(To install code upgrades, execute `rm -rf node_modules && npm cache clean -f && rm package.lock && npm i`)
 
 - Update the deviceName and platFormVersion in `config/android.device.info.js` and `config/ios.device.info.js` respectively. 
   For Android, it's mandatory to have the emulator configured & running before launching the tests, for iOS just a configured emulator is enough.
