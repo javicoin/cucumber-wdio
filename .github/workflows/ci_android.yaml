@@ -10,7 +10,7 @@ on:
         default: 'qa'
         type: choice
         options:
-          - staging
+          - stage
           - qa
 jobs:
   android_e2e_tests:
