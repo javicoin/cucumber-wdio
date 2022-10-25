@@ -102,12 +102,13 @@ BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under 
 process.env.BROWSERSTACK_ACCESS_KEY).
 - To run test on BrowserStack npm run `android_browserstack` or `ios_browserstack` scripts.
 
-## Downloading/Uploading Cucumber tests & Uploading tests results (BUILDING)
+## Downloading/Uploading Cucumber tests & Uploading tests results
 The framework adds a module based on axios to interact with Jira XRay API.
 This way we can download/upload our E2E tests written on Gherkin and once executed upload their results.
 The goal should be managing the features in the source code in order to avoid sync issues on Jira and for better maintainance and flexibility, as follows [Pure VCS based workflow](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
+
 Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
 
-- `download_cucumber_features` let's the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter must belong to a user story/task). It uses `cucumberConfig.json`
+- `download_cucumber_features` let's the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
 - `upload_cucumber_features` let's the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
 - `submit_cucumber_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.multipart.config.json`
