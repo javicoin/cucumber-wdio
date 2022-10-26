@@ -15,22 +15,18 @@ on:
           - stage
           - qa
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.15.1
-      - name: Install dependencies
-        run: npm install
-      - name: Download feature files
-        run: "npm run download_cucumber_features"
-
-  android:
+  android_tests:
     needs: install
     runs-on: ubuntu-latest
     steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16.15.1
+        - name: Install dependencies
+          run: npm install
+        - name: Download feature files
+          run: "npm run download_cucumber_features"
         - name: Test
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
