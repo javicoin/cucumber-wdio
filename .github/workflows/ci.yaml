@@ -25,6 +25,8 @@ jobs:
         - name: Install dependencies
           run: npm install
         - name: Download feature files
+          env: 
+            $IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: "npm run download_cucumber_features"
         - name: Test
           env: 
