@@ -1,4 +1,4 @@
-name: Android CI
+name: E2E Automation tests
 on: 
   push:
   pull_request:
@@ -13,7 +13,7 @@ on:
           - stage
           - qa
 jobs:
-  android_e2e_tests:
+  android:
     runs-on: ubuntu-latest
     steps:
         - name: Checkout
@@ -27,8 +27,8 @@ jobs:
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-            JIRA_CLOUD_ID: ${{ secrets.JIRA_CLOUD_ID }}
-            JIRA_CLOUD_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
+            $JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
+            $JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
           run: npx wdio test/config/android.bs.conf.js
         - uses: actions/upload-artifact@v1
           if: failure()

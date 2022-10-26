@@ -1,12 +1,11 @@
 const { XrayCloudClient, XrayCloudResponseV2, XrayErrorResponse } = require("fix-esm").require('@xray-app/xray-automation');
 const FilesHelper = require('../../helpers/filesHelper');
 
-async function submitCucumberTestResults(settings, resultsFile, config) {
-    const xrayCloudSettings = FilesHelper.processJson(settings);        
+async function submitCucumberTestResults(resultsFile, config) {      
     const multipartConfig = FilesHelper.processJson(config);
     
     console.log('Uploading reports to Jira Xray...');
-    const xrayClient = new XrayCloudClient(xrayCloudSettings);
+    const xrayClient = new XrayCloudClient();
 
     return xrayClient.submitResultsMultipart(resultsFile, multipartConfig)
     .then( response => { 
@@ -17,11 +16,10 @@ async function submitCucumberTestResults(settings, resultsFile, config) {
     });
 }
 
-async function downloadCucumberFeatures(settings, config) {
-    const xrayCloudSettings = FilesHelper.processJson(settings);        
+async function downloadCucumberFeatures(config) {       
     const cucumberConfig = FilesHelper.processJson(config);
    
-    const xrayClient = new XrayCloudClient(xrayCloudSettings);
+    const xrayClient = new XrayCloudClient();
     console.log('Downloading Cucumber features from Jira XRay...');
     
     return xrayClient.downloadCucumberFeatures(cucumberConfig)
@@ -37,7 +35,7 @@ async function downloadCucumberFeatures(settings, config) {
     });        
 }
 
-async function processDownloadFeatures(settings, config) {
+async function processDownloadFeatures(config) {
 
     process.stdout.write('Downloading features will DELETE existing ones. Are you sure you want to proceed? (y/n): ');
 
@@ -46,7 +44,7 @@ async function processDownloadFeatures(settings, config) {
         switch (key) {
             case "y":
                 process.stdin.pause();
-                return downloadCucumberFeatures(settings, config);
+                return downloadCucumberFeatures(config);
             case "n":
                 process.stdin.end();
                 return process.exit();
@@ -57,11 +55,10 @@ async function processDownloadFeatures(settings, config) {
     });
 }
 
-async function uploadCucumberFeatures(settings, config) {
-    const xrayCloudSettings = FilesHelper.processJson(settings);        
+async function uploadCucumberFeatures(config) {     
     const cucumberConfig = FilesHelper.processJson(config);
     
-    const xrayClient = new XrayCloudClient(xrayCloudSettings);
+    const xrayClient = new XrayCloudClient();
     console.log('Uploading Cucumber features to Jira XRay...');
 
     return xrayClient.uploadCucumberFeatures(cucumberConfig)
