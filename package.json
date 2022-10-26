@@ -41,11 +41,12 @@
     "webdriverio": "^6.12.1"
   },
   "dependencies": {
+    "@cucumber/cucumber": "^8.7.0",
     "@xray-app/xray-automation": "git+https://github.com/javicoin/xray-automation-js.git",
     "chai": "^4.2.0",
     "chromedriver": "^106.0.1",
-    "cucumber": "^6.0.5",
     "fix-esm": "^1.0.1",
+    "run-func": "^3.0.0",
     "wdio-cucumberjs-json-reporter": "^2.0.4"
   }
 }

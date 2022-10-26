@@ -1,5 +1,4 @@
 const {config} = require('./mobile.wdio.bs.conf');
-
 // Appium capabilities
 config.capabilities = [
     {
