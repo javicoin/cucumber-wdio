@@ -178,7 +178,7 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
      onPrepare: function (config, capabilities) {
-        console.log("configuration user&key:" + config.BROWSERSTACK_ACCESS_KEY)
+        console.log("configuration user&key:" + config.user);
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service

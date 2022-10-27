@@ -24,20 +24,20 @@ jobs:
             node-version: 16.15.1
         - name: Install dependencies
           run: npm install
-        - name: Checking env vars
+        - name: Download feature files
           env: 
             JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
             JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
             IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: |
-            echo $IS_CLOUD_RUNNER
-        - name: Download feature files
-          run: npm run download_cucumber_features
+            npm run remote_download_cucumber_features
         - name: Test
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-          run: npx wdio test/config/android.bs.conf.js
+          run: |
+            npx wdio test/config/android.bs.conf.js
         - name: Create Test Execution
-          run: "npm run submit_cucumber_results"
+          run: |
+            npm run submit_cucumber_results
 

@@ -36,27 +36,22 @@ async function downloadCucumberFeatures(config) {
 }
 
 async function processDownloadFeatures(config) {
+    process.stdout.write('Downloading features will DELETE existing ones. Are you sure you want to proceed? (y/n): ');
 
-    if (process.env.IS_CLOUD_RUNNER === undefined) {
-        process.stdout.write('Downloading features will DELETE existing ones. Are you sure you want to proceed? (y/n): ');
-
-        process.stdin.on('data', function(data) {
-            const key = data.toString().trim();
-            switch (key) {
-                case "y":
-                    process.stdin.pause();
-                    return downloadCucumberFeatures(config);
-                case "n":
-                    process.stdin.end();
-                    return process.exit();
-                default :
-                    process.stdin.end();
-                    return process.stdout.write('Try again (y/n)?: ');
-            }
-        });
-    } else {
-        return downloadCucumberFeatures(config);
-    }
+    process.stdin.on('data', function(data) {
+        const key = data.toString().trim();
+        switch (key) {
+            case "y":
+                process.stdin.pause();
+                return downloadCucumberFeatures(config);
+            case "n":
+                process.stdin.end();
+                return process.exit();
+            default :
+                process.stdin.end();
+                return process.stdout.write('Try again (y/n)?: ');
+        }
+    });
 }
 
 async function uploadCucumberFeatures(config) {     
@@ -85,5 +80,6 @@ async function uploadCucumberFeatures(config) {
 }
 
 module.exports.submitCucumberTestResults =  submitCucumberTestResults;
+module.exports.downloadCucumberFeatures =  downloadCucumberFeatures;
 module.exports.processDownloadFeatures =  processDownloadFeatures;
 module.exports.uploadCucumberFeatures =  uploadCucumberFeatures;
