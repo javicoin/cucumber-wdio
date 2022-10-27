@@ -26,15 +26,14 @@ jobs:
           run: npm install
         - name: Download feature files
           env: 
-            $IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
+            IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: "npm run download_cucumber_features"
         - name: Test
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-            $JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
-            $JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
-            $IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
+            JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
+            JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
           run: npx wdio test/config/android.bs.conf.js
         - name: Create Test Execution
           run: "npm run submit_cucumber_results"
