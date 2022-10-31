@@ -3,6 +3,23 @@ const Pages = require('../src/pages');
 const FilesHelper = require('../src/helpers/filesHelper');
 const fs = require('fs');
 
+const argv = require("yargs").argv;
+const wdioParallel = require('wdio-cucumber-parallel-execution');
+const sourceSpecDirectory = `test/features/_walletLivingDocumentation`;
+let featureFilePath = `${sourceSpecDirectory}/*.feature`;
+
+// If parallel execution is set to true, then create the Split the feature files
+// And store then in a tmp spec directory (created inside `the source spec directory)
+if (argv.parallel === 'true') {
+    tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
+    wdioParallel.performSetup({
+        sourceSpecDirectory: sourceSpecDirectory,
+        tmpSpecDirectory: tmpSpecDirectory,
+        cleanTmpSpecDirectory: true
+    });
+    featureFilePath = `${tmpSpecDirectory}/*.feature`
+}
+
 exports.config = {
     //
     // ====================
@@ -25,12 +42,13 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        'test/features/*LivingDocumentation/*.feature'        
+        `${featureFilePath}`
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
+    // maxInstances: 5,
     //
     // ============
     // Capabilities
@@ -90,14 +108,17 @@ exports.config = {
     connectionRetryTimeout: 30000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 1,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-        ['browserstack']
+        ['browserstack', {
+            browserstackLocal: true,
+            preferScenarioName: true
+        }]
     ],
     // port: 4723,
     // path: '/wd/hub',
@@ -178,9 +199,8 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-     onPrepare: function (config, capabilities) {
-        console.log("configuration user&key:" + config.user);
-     },
+    //  onPrepare: function (config, capabilities) {
+    //  },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.

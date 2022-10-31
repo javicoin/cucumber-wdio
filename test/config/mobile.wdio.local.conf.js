@@ -3,6 +3,23 @@ const Pages = require('../src/pages');
 const FilesHelper = require('../src/helpers/filesHelper');
 const fs = require('fs');
 
+const argv = require("yargs").argv;
+const wdioParallel = require('wdio-cucumber-parallel-execution');
+const sourceSpecDirectory = `test/features/_walletLivingDocumentation`;
+let featureFilePath = `${sourceSpecDirectory}/*.feature`;
+
+// If parallel execution is set to true, then create the Split the feature files
+// And store then in a tmp spec directory (created inside `the source spec directory)
+if (argv.parallel === 'true') {
+    tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
+    wdioParallel.performSetup({
+        sourceSpecDirectory: sourceSpecDirectory,
+        tmpSpecDirectory: tmpSpecDirectory,
+        cleanTmpSpecDirectory: true
+    });
+    featureFilePath = `${tmpSpecDirectory}/*.feature`
+}
+
 exports.config = {
     //
     // ====================
@@ -23,12 +40,14 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        'test/features/*LivingDocumentation/*.feature'        
+        `${featureFilePath}`
+        //'test/features/*LivingDocumentation/*.feature'        
     ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
+    maxInstances: 5,
     //
     // ============
     // Capabilities

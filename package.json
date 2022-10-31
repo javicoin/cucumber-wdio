@@ -8,17 +8,17 @@
   },
   "scripts": {
     "chrome": "wdio test/config/chrome.conf.js",
-    "android_local": "wdio test/config/android.conf.js",
-    "ios_local": "wdio test/config/ios.conf.js",
-    "android_browserstack": "wdio test/config/android.bs.conf.js",
-    "ios_browserstack": "wdio test/config/ios.bs.conf.js",
-    "local_download_cucumber_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js processDownloadFeatures test/config/xray/cucumberConfig.json",
-    "upload_cucumber_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures test/config/xray/cucumberConfig.json",
-    "submit_cucumber_results": "npx run-func test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output.json test/config/xray/cucumber.multipart.config.json",
+    "test:android:local": "wdio test/config/android.conf.js --parallel=true",
+    "test:ios:local": "wdio test/config/ios.conf.js",
+    "test:android:browserstack": "wdio test/config/android.bs.conf.js --parallel=true",
+    "test:ios:browserstack": "wdio test/config/ios.bs.conf.js",
+    "cucumber:download_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js processDownloadFeatures test/config/xray/cucumberConfig.json",
+    "cucumber:upload_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures test/config/xray/cucumberConfig.json",
+    "cucumber:submit_results": "npx run-func test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output.json test/config/xray/cucumber.multipart.config.json",
     "allure_report_mobile": "./node_modules/.bin/allure generate --clean 'test/reports/mobile/allure-results' && allure open",
     "allure_report_web": "./node_modules/.bin/allure generate --clean 'test/reports/web/allure-results' && allure open",
     "lint": "eslint .",
-    "remote_download_cucumber_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js downloadCucumberFeatures test/config/xray/cucumberConfig.json",
+    "remote:cucumber:download_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js downloadCucumberFeatures test/config/xray/cucumberConfig.json",
     "merge_json_reports": "npx run-func test/src/helpers/lib/merge-reports.js mergeJsonReports"
   },
   "keywords": [
@@ -40,6 +40,7 @@
     "allure-commandline": "^2.18.1",
     "eslint": "^7.3.0",
     "wdio-chromedriver-service": "^6.0.4",
+    "wdio-cucumber-parallel-execution": "^3.6.15",
     "webdriverio": "^6.12.1"
   },
   "dependencies": {
@@ -48,6 +49,7 @@
     "chai": "^4.2.0",
     "chromedriver": "^106.0.1",
     "fix-esm": "^1.0.1",
+    "node-emoji": "^1.11.0",
     "run-func": "^3.0.0",
     "wdio-cucumberjs-json-reporter": "^2.0.4"
   }

@@ -9,12 +9,15 @@ config.capabilities = [
         device: "Google Pixel 5",
         os_version: "12.0",
         // bs requirement
-        app: 'WalletApp',
+        //app: 'WalletApp',
+        app: 'bs://0c778afd56cfab653b188726ac2c4d9351053f8f',
         'bstack:options' : {
-            "appiumVersion" : "2.0.0",  
+            "appiumVersion" : "2.0.0"
         },
         'browserstack.debug': true,
-        'browserstack.networkLogs': true
+        'browserstack.networkLogs': true,
+        'browserstack.appiumLogs': true,
+        'browserstack.deviceLogs': true
     }
 ];
 

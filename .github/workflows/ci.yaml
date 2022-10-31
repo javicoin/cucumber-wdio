@@ -30,7 +30,7 @@ jobs:
             JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
             IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: |
-            npm run remote_download_cucumber_features
+            npm run remote:cucumber:download_features
         - name: Test
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
@@ -43,4 +43,4 @@ jobs:
             npm run merge_json_reports
         - name: Create Test Execution
           run: |
-            npm run submit_cucumber_results
+            npm run cucumber:submit_results
