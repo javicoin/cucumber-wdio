@@ -37,7 +37,10 @@ jobs:
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           run: |
             npx wdio test/config/android.bs.conf.js
+        - name: Merge json reports
+          if: success() || failure()
+          run: |
+            npm run merge_json_reports
         - name: Create Test Execution
           run: |
             npm run submit_cucumber_results
-

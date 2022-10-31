@@ -85,7 +85,7 @@ exports.config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 30000,
     //
     // Default request retries count
     connectionRetryCount: 3,
@@ -136,7 +136,7 @@ exports.config = {
         strict: false,
         tagsInTitle: false,
         // <number> timeout for step definitions
-        timeout: 50000,
+        timeout: 20000,
         retry: 0
     },
     //
@@ -152,8 +152,9 @@ exports.config = {
     reporters: [
         [
             'cucumberjs-json', {
-                jsonFolder: './test/reports/mobile/cucumber/json',
+                jsonFolder: './test/reports/mobile/cucumber/json/',
                 language: 'en',
+                disableHooks:true
             }
         ],
         [
