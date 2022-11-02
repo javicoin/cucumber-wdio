@@ -29,7 +29,6 @@ jobs:
           env: 
             JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
             JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
-            IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: |
             npm run remote:cucumber:download_features
 
@@ -52,6 +51,9 @@ jobs:
             path: test/reports/mobile/cucumber/json/merged_output.json
 
         - name: Create Test Execution
+          env: 
+            JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
+            JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
           if: always()
           run: |
             npm run cucumber:submit_results
