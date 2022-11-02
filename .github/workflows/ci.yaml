@@ -46,11 +46,13 @@ jobs:
             npm run merge_json_reports
 
         - name: Upload Artifact
+          if: success() || failure()
           uses: actions/upload-artifact@v1
           with:
             name: merged_output.json
             path: test/reports/mobile/cucumber/json/
 
         - name: Create Test Execution
+          if: success() || failure()
           run: |
             npm run cucumber:submit_results
