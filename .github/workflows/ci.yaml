@@ -24,6 +24,7 @@ jobs:
             node-version: 16.15.1
         - name: Install dependencies
           run: npm install
+
         - name: Download feature files
           env: 
             JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
@@ -31,16 +32,25 @@ jobs:
             IS_CLOUD_RUNNER: ${{ secrets.IS_CLOUD_RUNNER }}
           run: |
             npm run remote:cucumber:download_features
+
         - name: Test
           env: 
             BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
             BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
           run: |
             npx wdio test/config/android.bs.conf.js
+
         - name: Merge json reports
           if: success() || failure()
           run: |
             npm run merge_json_reports
+
+        - name: Upload Artifact
+          uses: actions/upload-artifact@v1
+          with:
+            name: merged_output.json
+            path: test/reports/mobile/cucumber/json/
+
         - name: Create Test Execution
           run: |
             npm run cucumber:submit_results

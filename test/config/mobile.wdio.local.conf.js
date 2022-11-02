@@ -4,7 +4,7 @@ const FilesHelper = require('../src/helpers/filesHelper');
 const fs = require('fs');
 
 const argv = require("yargs").argv;
-const wdioParallel = require('wdio-cucumber-parallel-execution');
+const wdioParallel = require('wdio-cucumber-parallel-execution/src');
 const sourceSpecDirectory = `test/features/_walletLivingDocumentation`;
 let featureFilePath = `${sourceSpecDirectory}/*.feature`;
 
@@ -14,8 +14,7 @@ if (argv.parallel === 'true') {
     tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
     wdioParallel.performSetup({
         sourceSpecDirectory: sourceSpecDirectory,
-        tmpSpecDirectory: tmpSpecDirectory,
-        cleanTmpSpecDirectory: true
+        tmpSpecDirectory: tmpSpecDirectory
     });
     featureFilePath = `${tmpSpecDirectory}/*.feature`
 }
@@ -29,7 +28,6 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
-    sync: true,
     //
     // ==================
     // Specify Test Files
@@ -47,7 +45,7 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
-    maxInstances: 5,
+    maxInstances: 1,
     //
     // ============
     // Capabilities
@@ -107,7 +105,7 @@ exports.config = {
     connectionRetryTimeout: 30000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 0,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance

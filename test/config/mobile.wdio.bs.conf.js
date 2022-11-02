@@ -4,7 +4,7 @@ const FilesHelper = require('../src/helpers/filesHelper');
 const fs = require('fs');
 
 const argv = require("yargs").argv;
-const wdioParallel = require('wdio-cucumber-parallel-execution');
+const wdioParallel = require('wdio-cucumber-parallel-execution/src');
 const sourceSpecDirectory = `test/features/_walletLivingDocumentation`;
 let featureFilePath = `${sourceSpecDirectory}/*.feature`;
 
@@ -14,8 +14,7 @@ if (argv.parallel === 'true') {
     tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
     wdioParallel.performSetup({
         sourceSpecDirectory: sourceSpecDirectory,
-        tmpSpecDirectory: tmpSpecDirectory,
-        cleanTmpSpecDirectory: true
+        tmpSpecDirectory: tmpSpecDirectory
     });
     featureFilePath = `${tmpSpecDirectory}/*.feature`
 }
@@ -30,8 +29,6 @@ exports.config = {
     // on a remote machine).
     user: process.env.BROWSERSTACK_USERNAME,
     key: process.env.BROWSERSTACK_ACCESS_KEY,
-    runner: 'local',
-    sync: true,
     //
     // ==================
     // Specify Test Files
@@ -48,7 +45,7 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
-    // maxInstances: 5,
+    maxInstances: 1,
     //
     // ============
     // Capabilities
@@ -105,10 +102,10 @@ exports.config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 30000,
+    connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 1,
+    connectionRetryCount: 0,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -156,7 +153,7 @@ exports.config = {
         strict: true,
         tagsInTitle: false,
         // <number> timeout for step definitions
-        timeout: 20000,
+        timeout: 50000,
         retry: 0
     },
     //
