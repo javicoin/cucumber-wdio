@@ -39,21 +39,42 @@ jobs:
           run: |
             npx wdio test/config/android.bs.conf.js
 
-        - name: Merge json reports
+        - name: Consolidate JSON report
           if: success() || failure()
           run: |
             npm run merge_json_reports
 
-        - name: Store report
+        - name: Archive JSON report
           if: always()
           uses: actions/upload-artifact@v3
           with:
-            path: test/reports/mobile/cucumber/json/merged_output.json
+            name: merged_output_report
+            path: test/reports/mobile/cucumber/json/merged_output_report.json
+
+  submit_results_jira:
+    if: always()
+    needs: android_tests
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 16.15.1
+        - name: Install dependencies
+          run: npm install
+
+        - uses: actions/download-artifact@v3          
+          with:
+            name: merged_output_report
+            path: test/reports/mobile/cucumber/json
+            
+        - name: Display structure of downloaded files
+          run: ls -R
+          working-directory: test/reports/mobile/cucumber/json/
 
         - name: Create Test Execution
           env: 
             JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
             JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
-          if: always()
           run: |
             npm run cucumber:submit_results

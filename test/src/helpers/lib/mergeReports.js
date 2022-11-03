@@ -12,10 +12,10 @@ const path = require('path');
 //     );
 // program.parse(process.argv)
 // const backupDirectory = `${program.directory}_bkp`;
-// const outputFile = path.join(program.directory, 'merged_output.json');
+// const outputFile = path.join(program.directory, 'merged_output_report.json');
 const program_directory = 'test/reports/mobile/cucumber/json';
 const backupDirectory = `${program_directory}_bkp`;
-const outputFile = path.join(program_directory, 'merged_output.json');
+const outputFile = path.join(program_directory, 'merged_output_report.json');
 
 /**
  * Creates backup directory if it doesn't exist or empties it if it does exist

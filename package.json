@@ -14,7 +14,7 @@
     "test:ios:browserstack": "wdio test/config/ios.bs.conf.js",
     "cucumber:download_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js processDownloadFeatures test/config/xray/cucumberConfig.json",
     "cucumber:upload_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures test/config/xray/cucumberConfig.json",
-    "cucumber:submit_results": "npx run-func test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output.json test/config/xray/cucumber.multipart.config.json",
+    "cucumber:submit_results": "npx run-func test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output_report.json test/config/xray/cucumber.multipart.config.json",
     "allure:report_mobile": "./node_modules/.bin/allure generate --clean 'test/reports/mobile/allure-results' && allure open",
     "allure:report_web": "./node_modules/.bin/allure generate --clean 'test/reports/web/allure-results' && allure open",
     "lint": "eslint .",

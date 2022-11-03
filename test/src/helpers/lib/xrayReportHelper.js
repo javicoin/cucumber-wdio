@@ -12,7 +12,10 @@ async function submitCucumberTestResults(resultsFile, config) {
         console.log('Test Execution created \'' + response.key + '\'');
         // DEBUG return new XrayCloudResponseV2(response);
     }).catch( error => { 
-        throw new Error(error.message || error.body.error);   
+        if (error.body.error !== undefined)
+            throw new Error(error.body.error);
+        else
+            throw new Error(error.message);
     });
 }
 
