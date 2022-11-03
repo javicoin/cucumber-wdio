@@ -22,8 +22,20 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 16.15.1
-        - name: Install dependencies
-          run: npm install
+      
+        - name: Cache node modules
+          id: cache-node-modules
+          uses: actions/cache@v3
+          with:
+            path: '~/.npm'
+            key: ${{ node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              node-       
+    
+        - if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
+          name: Install dependencies
+          continue-on-error: true
+          run: npm ci
 
         - name: Download feature files
           env: 
@@ -60,17 +72,15 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 16.15.1
+            
         - name: Install dependencies
-          run: npm install
+          if: ${{ jobs.android_tests.steps.cache-node-modules.outputs.cache-hit != 'true' }}
+          run: npm ci
 
         - uses: actions/download-artifact@v3          
           with:
             name: merged_output_report
             path: test/reports/mobile/cucumber/json
-            
-        - name: Display structure of downloaded files
-          run: ls -R
-          working-directory: test/reports/mobile/cucumber/json/
 
         - name: Create Test Execution
           env: 
