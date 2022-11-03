@@ -27,15 +27,13 @@ jobs:
           id: cache-node-modules
           uses: actions/cache@v3
           with:
-            path: '~/.npm'
-            key: node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              node-       
+            path: './node_modules'
+            key: modules-${{ hashFiles('**/package-lock.json') }}    
     
         - if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
           name: Install dependencies
           continue-on-error: true
-          run: npm ci
+          run: npm ci --ignore-scripts
 
         - name: Download feature files
           env: 
@@ -77,15 +75,13 @@ jobs:
           id: cache-node-modules
           uses: actions/cache@v3
           with:
-            path: '~/.npm'
-            key: node-${{ hashFiles('**/package-lock.json') }}
-            restore-keys: |
-              node-       
+            path: './node_modules'
+            key: node-${{ hashFiles('**/package-lock.json') }}       
     
         - if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
           name: Install dependencies
           continue-on-error: true
-          run: npm ci
+          run: npm ci --ignore-scripts
 
         - uses: actions/download-artifact@v3          
           with:
