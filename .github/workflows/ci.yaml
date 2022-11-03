@@ -28,7 +28,7 @@ jobs:
           uses: actions/cache@v3
           with:
             path: '~/.npm'
-            key: ${{ node-${{ hashFiles('**/package-lock.json') }}
+            key: node-${{ hashFiles('**/package-lock.json') }}
             restore-keys: |
               node-       
     
@@ -72,9 +72,9 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 16.15.1
-            
+
         - name: Install dependencies
-          if: ${{ jobs.android_tests.steps.cache-node-modules.outputs.cache-hit != 'true' }}
+          if: ${{ android_tests.steps.cache-node-modules.outputs.cache-hit != 'true' }}
           run: npm ci
 
         - uses: actions/download-artifact@v3          
