@@ -73,8 +73,18 @@ jobs:
           with:
             node-version: 16.15.1
 
-        - name: Install dependencies
-          if: ${{ android_tests.steps.cache-node-modules.outputs.cache-hit != 'true' }}
+        - name: Cache node modules
+          id: cache-node-modules
+          uses: actions/cache@v3
+          with:
+            path: '~/.npm'
+            key: node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              node-       
+    
+        - if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
+          name: Install dependencies
+          continue-on-error: true
           run: npm ci
 
         - uses: actions/download-artifact@v3          
