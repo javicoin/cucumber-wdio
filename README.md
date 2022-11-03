@@ -40,10 +40,12 @@ export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+export JIRA_CLOUD_CLIENT_ID="XXX" 
+export JIRA_CLOUD_CLIENT_SECRET="YYY"
+
 export BROWSERSTACK_USERNAME="XXX"
 export BROWSERSTACK_ACCESS_KEY="YYY"
-export JIRA_CLOUD_CLIENT_ID="WWW" 
-export JIRA_CLOUD_CLIENT_SECRET="ZZZ"
 
 ```
 
@@ -91,18 +93,17 @@ Follow the below commands
 
 To visualize NPM Scripts view go to View -> Open View... -> NPM Scripts
 
-- Execute `npm run android` or `android` script to run android native app
+- Execute `test:android:local` script to run android native app locally
 
-- Execute `npm run ios` or `ios` script to run ios native app
+- Execute `test:ios:local` script to run ios native app locally
 
 - Execute `npm run lint` or `lint` script to run eslint
 
-- Execute `npm run xray_results_upload` or `xray_results_upload` script to upload executed test results to Jira (you need Jira credentials for the matter)
 
 ## Browserstack
 BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the /test/config folder. You just need to provide your BrowserStack credentials as environment variables (process.env.BROWSERSTACK_USERNAME,
 process.env.BROWSERSTACK_ACCESS_KEY).
-- To run test on BrowserStack npm run `android_browserstack` or `ios_browserstack` scripts.
+- To run test on BrowserStack npm run `test:android:browserstack` or `test:ios:browserstack` scripts.
 
 ## Downloading/Uploading Cucumber tests & Uploading tests results
 The framework adds a module based on axios to interact with Jira XRay API.
@@ -111,6 +112,6 @@ The goal should be managing the features in the source code in order to avoid sy
 
 Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
 
-- `download_cucumber_features` let's the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
-- `upload_cucumber_features` let's the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
-- `submit_cucumber_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.multipart.config.json`
+- `cucumber:download_features` let's the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
+- `cucumber:upload_features` let's the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
+- `cucumber:submit_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.multipart.config.json`
