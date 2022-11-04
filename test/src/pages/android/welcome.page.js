@@ -1,5 +1,6 @@
 class WelcomePage{
-
+        buttonOK =
+            'android=new UiSelector().text("OK").className("android.widget.TextView")';
         createWallet =
             '~newWallet';
         importWallet =

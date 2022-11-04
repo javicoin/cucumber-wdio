@@ -19,6 +19,8 @@ class WelcomeActions {
     }
 
     async createWallet() {
+        // TODO: click if present
+        // await ActionHelper.click(Pages.welcomePage.buttonOK);
         await ActionHelper.click(Pages.welcomePage.createWallet);
         await this.skipOnboarding();
         await this.storeMasterKey();

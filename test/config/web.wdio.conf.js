@@ -7,7 +7,6 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
-    sync: true,
     //
     // ==================
     // Specify Test Files
@@ -25,6 +24,7 @@ exports.config = {
     exclude: [
         // 'path/to/excluded/files'
     ],
+    maxInstances: 1,
     //
     // ============
     // Capabilities
@@ -84,7 +84,7 @@ exports.config = {
     connectionRetryTimeout: 20000,
     //
     // Default request retries count
-    connectionRetryCount: 2,
+    connectionRetryCount: 1,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -105,23 +105,21 @@ exports.config = {
     // before running any tests.
     framework: 'cucumber',
     cucumberOpts: {
-        backtrace: false,
-        requireModule: [],
-        failAmbiguousDefinitions: false,
-        failFast: false,
-        ignoreUndefinedDefinitions: false,
-        name: [],
-        profile: [],
-        require: [
-            'test/features/stepDefinitions/*.steps.js'
-        ],
-        snippetSyntax: undefined,
-        snippets: true,
-        source: true,
-        strict: false,
-        tagsInTitle: false,
-        timeout: 20000,
-        retry: 0
+     backtrace: false,
+     requireModule: [],
+     failAmbiguousDefinitions: false,
+     failFast: false,
+     ignoreUndefinedDefinitions: false,
+     name: [],
+     profile: [],
+     require: ['test/features/stepDefinitions/*.steps.js'],
+     snippetSyntax: undefined,
+     snippets: true,
+     source: true,
+     strict: false,
+     tagsInTitle: false,
+     timeout: 20000,
+     retry: 0
     },
     //
     // The number of times to retry the entire specfile when it fails as a whole

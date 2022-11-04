@@ -127,33 +127,42 @@ exports.config = {
     // before running any tests.
     framework: 'cucumber',
     cucumberOpts: {
-        // <string[]> (file/dir) require files before executing features
-        require: [
-            'test/features/stepDefinitions/*.steps.js'
-        ],
+        require: ['test/features/stepDefinitions/*.steps.js'],
+
         // <boolean> show full backtrace for errors
         backtrace: false,
-        // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+
         requireModule: [],
         failAmbiguousDefinitions: false,
+
         // <boolean> abort the run on first failure
         failFast: false,
+
         // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
         format: ['json', 'html'],
+
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false,
+
         // <string[]> (name) specify the profile to use
         profile: [],
+
         snippetSyntax: undefined,
+
         // <boolean> hide step definition snippets for pending steps
         snippets: true,
+
         // <boolean> hide source uris
         source: true,
+
         // <boolean> fail if there are any undefined or pending steps
         strict: true,
+
         tagsInTitle: false,
+
         // <number> timeout for step definitions
         timeout: 50000,
+
         retry: 0
     },
     //
