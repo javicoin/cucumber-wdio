@@ -28,10 +28,10 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 - [Appium doctor](https://www.npmjs.com/package/appium-doctor)
 
 To ensure everything is installed properly
--  Run `appium-inspector` in your terminal
+-  Run `appium-inspector` in the terminal
 
-## Environment variables config
-- Edit your `~/.zshrc` (or bash_profile), the environment variables should look like:
+### Environment variables config
+- Edit the `~/.zshrc` (or bash_profile), the environment variables should look like:
 
 ```
 
@@ -51,10 +51,9 @@ export BROWSERSTACK_ACCESS_KEY="YYY"
 
 ```
 
-## Additional requirements
+### Additional requirements
 
 - [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
-
 - [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
 - [Appium driver XCUITest repository](https://github.com/appium/appium-xcuitest-driver#desired-capabilities)
 - [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
@@ -91,15 +90,20 @@ To visualize NPM Scripts view go to View -> Open View... -> NPM Scripts
 
 
 ## Browserstack
-BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the /test/config folder. You just need to provide your BrowserStack credentials as environment variables (process.env.BROWSERSTACK_USERNAME,
-process.env.BROWSERSTACK_ACCESS_KEY).
+BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the /test/config folder.
+
+It's required to provide BrowserStack credentials as environment variables (process.env.BROWSERSTACK_USERNAME & process.env.BROWSERSTACK_ACCESS_KEY).
+
 - To run test on BrowserStack npm run `test:android:browserstack` or `test:ios:browserstack` scripts.
 
 ## External libraries
 ### Downloading/Uploading Cucumber features (tests) & Creating Test Executions in Jira
 - [@xray-app/xray-automation module](https://github.com/javicoin/xray-automation-js)
-The framework adds a module based on axios to interact with Jira XRay API.
-This module lets download/upload the E2E tests written on Gherkin and once executed upload their results by creating a Test Execution.
+
+This module based on axios is used to interact with Jira XRay API, it lets:
+- Download/Upload the E2E tests written on Gherkin
+- Once tests are executed, it lets to upload their results by creating a Test Execution.
+
 The goal should be managing the features in the source code in order to avoid sync issues on Jira and for better maintainance and flexibility, as follows [Pure VCS based workflow](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
 
 Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
