@@ -1,4 +1,4 @@
-const {Given, When, Then} = require('cucumber');
+const {Given, When, Then} = require("@cucumber/cucumber");
 const Actions = require('../../src/actions');
 
 Given(/^I launch the app$/, async function () {
@@ -10,6 +10,8 @@ Given(/^I open the RSK wallet for the first time$/, async function () {
 });
 
 When(/^I create a new wallet$/, async function () {
+	// let pageSource = await driver.getPageSource();
+	// console.log(pageSource);
 	await Actions.welcomeActions.createWallet();
 });
 

@@ -15,7 +15,8 @@ config.capabilities = [
         // 'appium:app': path.resolve(`./test/resources/apps/${AndroidInfo.appName()}`),
         'appium:noReset': 'false',
         'appium:fullReset': 'false',
-        'appium:autoGrantPermissions': 'true'
+        'appium:autoGrantPermissions': 'true',
+        'appium:autoDismissAlerts': 'true',
         // 'appium:printPageSourceOnFindFailure': 'true',
         // 'appium:isHeadless': 'true'
     }
