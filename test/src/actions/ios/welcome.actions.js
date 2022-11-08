@@ -1,6 +1,6 @@
 const AndroidWelcomeActions = require('../android/welcome.actions');
-const ActionHelper = require('../../helpers/actionHelper');
-const FilesHelper = require('../../helpers/filesHelper');
+const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
+const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const Pages = require('../../pages');
 const walletData = './test/resources/files/walletData.json';
 

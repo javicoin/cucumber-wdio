@@ -40,7 +40,7 @@ jobs:
             JIRA_CLOUD_CLIENT_ID: ${{ secrets.JIRA_CLOUD_ID }}
             JIRA_CLOUD_CLIENT_SECRET: ${{ secrets.JIRA_CLOUD_SECRET }}
           run: |
-            npm run remote:cucumber:download_features
+            npm run cucumber:download_features
 
         - name: Test
           env: 

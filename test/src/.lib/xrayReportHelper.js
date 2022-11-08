@@ -1,8 +1,8 @@
 const { XrayCloudClient, XrayCloudResponseV2, XrayErrorResponse } = require("fix-esm").require('@xray-app/xray-automation');
-const FilesHelper = require('../../helpers/filesHelper');
+const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 
 async function submitCucumberTestResults(resultsFile, config) {      
-    const multipartConfig = FilesHelper.processJson(config);
+    const multipartConfig = FilesHelper.getJsonContent(config);
     
     console.log('Uploading reports to Jira Xray...');
     const xrayClient = new XrayCloudClient();
@@ -22,7 +22,7 @@ async function submitCucumberTestResults(resultsFile, config) {
 }
 
 async function downloadCucumberFeatures(config) {       
-    const cucumberConfig = FilesHelper.processJson(config);
+    const cucumberConfig = FilesHelper.getJsonContent(config);
    
     const xrayClient = new XrayCloudClient();
     console.log('Downloading Cucumber features from Jira XRay...');
@@ -33,7 +33,7 @@ async function downloadCucumberFeatures(config) {
         // DEBUG return new XrayCloudResponseV2(response._response);
     }).catch( function(error) {
         if (error._response !== undefined && error._response.status == 400 )
-            throw new Error('Invalid keys/filter id or either filter is not public!');   
+            throw new Error('ERROR! Invalid keys/filter id, filter is not public or tests are not written in Gherkin sintax');   
         else if (error.body !== undefined)
             throw new Error(error.body.error);
         else
@@ -41,27 +41,8 @@ async function downloadCucumberFeatures(config) {
     });        
 }
 
-async function processDownloadFeatures(config) {
-    process.stdout.write('Downloading features will DELETE existing ones. Are you sure you want to proceed? (y/n): ');
-
-    process.stdin.on('data', function(data) {
-        const key = data.toString().trim();
-        switch (key) {
-            case "y":
-                process.stdin.pause();
-                return downloadCucumberFeatures(config);
-            case "n":
-                process.stdin.end();
-                return process.exit();
-            default :
-                process.stdin.end();
-                return process.stdout.write('Try again (y/n)?: ');
-        }
-    });
-}
-
 async function uploadCucumberFeatures(config) {     
-    const cucumberConfig = FilesHelper.processJson(config);
+    const cucumberConfig = FilesHelper.getJsonContent(config);
     
     const xrayClient = new XrayCloudClient();
     console.log('Uploading Cucumber features to Jira XRay...');
@@ -89,5 +70,5 @@ async function uploadCucumberFeatures(config) {
 
 module.exports.submitCucumberTestResults =  submitCucumberTestResults;
 module.exports.downloadCucumberFeatures =  downloadCucumberFeatures;
-module.exports.processDownloadFeatures =  processDownloadFeatures;
+//module.exports.processDownloadFeatures =  processDownloadFeatures;
 module.exports.uploadCucumberFeatures =  uploadCucumberFeatures;

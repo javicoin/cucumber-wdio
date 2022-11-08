@@ -4,6 +4,7 @@ Run native automation for web (browser) & mobile (android and ios) using cucumbe
 
 ## Supports
 
+- VSCode
 - JavaScript
 - Native/Hybrid Android & iOS apps, web browsers
 - Contains sample test scenarios in cucumber
@@ -53,22 +54,19 @@ export BROWSERSTACK_ACCESS_KEY="YYY"
 
 ### Additional requirements
 
-- [Appium 2.0.0 package installation](https://www.npmjs.com/package/appium/v/2.0.0-beta.40)
-- [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
-- [Appium driver XCUITest repository](https://github.com/appium/appium-xcuitest-driver#desired-capabilities)
-- [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
-- [Appium driver UIAutomator2 selectors](https://developer.android.com/reference/androidx/test/uiautomator/package-summary)
-
 For Android
-- Android Studio
-- Android SDK tools & platform tools
+- Android Studio, SDK tools & platform tools
 - AVD Manager to create & configure android emulators (with developer options enabled)
-- [React environment setup](https://reactnative.dev/docs/environment-setup)
+- [Appium driver UIAutomator2](https://www.npmjs.com/package/appium-uiautomator2-driver)
 
 For iOS
-- XCode
-- XCode Command Line Tools
-- iOS simulators
+- XCode, XCode Command Line Tools & iOS simulators
+- [Appium driver XCUITest](http://appium.io/docs/en/drivers/ios-xcuitest/)
+
+### VSCode
+
+- To visualize NPM Scripts view go to View -> Open View... -> NPM Scripts
+- To create step definitions from feature files easily [Cuke Step Definition Generator extension] (https://marketplace.visualstudio.com/items?itemName=muralidharan92.cuke-step-definition-generator&utm_source=VSCode.pro&utm_campaign=AhmadAwais#:~:text=generate%20step%20definition-,Below%20Are%20The%203%20Different%20Ways%20To%20Trigger%20The%20Cuke,proceed%20to%20generate%20step%20definition)
 
 
 ## Running tests & Reports
@@ -81,8 +79,6 @@ Follow the below commands
 
 - Update the deviceName and platFormVersion in `config/android.device.info.js` and `config/ios.device.info.js` respectively. 
   For Android, it's mandatory to have the emulator configured & running before launching the tests, for iOS just a configured emulator is enough.
-
-To visualize NPM Scripts view go to View -> Open View... -> NPM Scripts
 
 - Execute `test:android:local` script to run android native app locally
 

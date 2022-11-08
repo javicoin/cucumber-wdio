@@ -12,14 +12,13 @@
     "test:ios:local": "wdio test/config/ios.local.conf.js --parallel=true",
     "test:android:browserstack": "wdio test/config/android.bs.conf.js --parallel=true",
     "test:ios:browserstack": "wdio test/config/ios.bs.conf.js --parallel=true",
-    "cucumber:download_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js processDownloadFeatures test/config/xray/cucumberConfig.json",
-    "cucumber:upload_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js uploadCucumberFeatures test/config/xray/cucumberConfig.json",
-    "cucumber:submit_results": "npx run-func test/src/helpers/lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output_report.json test/config/xray/cucumber.multipart.config.json",
+    "cucumber:download_features": "npx run-func test/src/.lib/xrayReportHelper.js downloadCucumberFeatures test/config/xray/cucumberConfig.json",
+    "cucumber:upload_features": "npx run-func test/src/.lib/xrayReportHelper.js uploadCucumberFeatures test/config/xray/cucumberConfig.json",
+    "cucumber:submit_results": "npx run-func test/src/.lib/xrayReportHelper.js submitCucumberTestResults test/reports/mobile/cucumber/json/merged_output_report.json test/config/xray/cucumber.multipart.config.json",
     "allure:report_mobile": "./node_modules/.bin/allure generate --clean 'test/reports/mobile/allure-results' && allure open",
     "allure:report_web": "./node_modules/.bin/allure generate --clean 'test/reports/web/allure-results' && allure open",
     "lint": "eslint .",
-    "remote:cucumber:download_features": "npx run-func test/src/helpers/lib/xrayReportHelper.js downloadCucumberFeatures test/config/xray/cucumberConfig.json",
-    "merge_json_reports": "npx run-func test/src/helpers/lib/mergeReports.js mergeJsonReports"
+    "merge_json_reports": "npx run-func test/src/.lib/mergeReports.js mergeJsonReports"
   },
   "keywords": [
     "appium",
@@ -28,7 +27,7 @@
     "wdio",
     "mobile automation"
   ],
-  "author": "",
+  "author": "javicoin",
   "license": "ISC",
   "devDependencies": {
     "@wdio/allure-reporter": "^7.25.4",
@@ -45,11 +44,12 @@
   "dependencies": {
     "@wdio/codemod": "^0.12.0",
     "@xray-app/xray-automation": "git+https://github.com/javicoin/xray-automation-js.git",
-    "chai": "^4.2.0",
+    "chai": "^4.3.7",
     "chromedriver": "^106.0.1",
     "fix-esm": "^1.0.1",
     "jscodeshift": "^0.14.0",
     "run-func": "^3.0.0",
+    "wdio-common": "git+https://github.com/javicoin/wdio-common.git",
     "wdio-cucumber-parallel-execution": "git+https://github.com/javicoin/wdio-cucumber-parallel-execution",
     "wdio-cucumberjs-json-reporter": "^4.4.3"
   }

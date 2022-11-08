@@ -1,1 +1,1 @@
-{"format":"cucumber","testExecInfo":{"fields":{"project":{"key":"QAATR"},"summary":"Test Execution for Cucumber tests","issuetype":{"name":"Test Execution"},"description":"This contains test automation results"},"xrayFields":{"testPlanKey":"QAATR-1282","environments":["Android"]}}}
+{"format":"cucumber","testExecInfo":{"fields":{"project":{"key":"QAATR"},"summary":"Test Execution for Cucumber tests","issuetype":{"name":"Test Execution"},"description":"This contains test automation results"},"xrayFields":{"testPlanKey":"QAATR-1282","environments":["iOS"]}}}

@@ -1,6 +1,6 @@
 const Actions = require('../src/actions');
 const Pages = require('../src/pages');
-const FilesHelper = require('../src/helpers/filesHelper');
+const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const fs = require('fs');
 
 const argv = require("yargs").argv;
@@ -318,7 +318,7 @@ exports.config = {
         const multipartConfig = './test/config/xray/cucumber.multipart.config.json';
         const platform = [capabilities[0].platformName];
         try {
-            let file = FilesHelper.processJson(multipartConfig);
+            let file = FilesHelper.getJsonContent(multipartConfig);
             file.testExecInfo.xrayFields.environments = platform;
             fs.writeFileSync(multipartConfig, JSON.stringify(file));
         } catch (error) {
