@@ -161,7 +161,7 @@ exports.config = {
         tagsInTitle: false,
 
         // <number> timeout for step definitions
-        timeout: 20000,
+        timeout: 200000,
 
         retry: 0
     },
