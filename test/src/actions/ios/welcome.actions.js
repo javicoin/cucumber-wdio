@@ -13,7 +13,6 @@ class WelcomeActions extends AndroidWelcomeActions {
         let wordText2 = '';
         let wordText3 = '';
         for (let i = 1; i <= 8; i++) {
-            await ActionHelper.waitForDisplayed(Pages.welcomePage.mnemonic, 3000);
             wordList = await $$(Pages.welcomePage.mnemonic);
             wordText1 = (await ActionHelper.getText(wordList[0])).split(' ')[1];
             wordText2 = (await ActionHelper.getText(wordList[1])).split(' ')[1];
