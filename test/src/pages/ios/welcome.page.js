@@ -3,7 +3,7 @@ const AndroidWelcomePage = require('../android/welcome.page');
 class WelcomePage extends AndroidWelcomePage{
         masterKeyTitle =
             '~Your Master Key';
-        nemonic =
+        mnemonic =
             '//XCUIElementTypeStaticText[contains(@label,"word")]';
 }
 

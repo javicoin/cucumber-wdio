@@ -34,7 +34,6 @@ class WelcomeActions {
         await ActionHelper.click(Pages.welcomePage.secureNow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
-        await ActionHelper.pause(1000)
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.waitForDisplayed(Pages.welcomePage.masterKeyTitle, 3000);
     }
@@ -42,11 +41,12 @@ class WelcomeActions {
     async storeMasterKey() {
         const masterKey = [];
         let wordList = '';
-        let wordText1 = '';;
+        let wordText1 = '';
         let wordText2 = '';
         let wordText3 = '';
         for (let i = 1; i <= 8; i++) {
-            wordList = await $$(Pages.welcomePage.wordList);
+            await ActionHelper.waitForDisplayed(Pages.welcomePage.mnemonic, 3000);
+            wordList = await $$(Pages.welcomePage.mnemonic);
             wordText1 = await ActionHelper.getText(wordList[0]);
             wordText2 = await ActionHelper.getText(wordList[1]);
             wordText3 = await ActionHelper.getText(wordList[2]);

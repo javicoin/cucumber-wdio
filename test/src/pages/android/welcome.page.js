@@ -8,10 +8,10 @@ class WelcomePage{
         secureNow =
             '~secureNow';
         rightNavigationArrow =
-            '//XCUIElementTypeOther[@name="buttonRight"]';
+            '~buttonRight';
         masterKeyTitle =
             'android=new UiSelector().text("Your Master Key").className("android.widget.TextView")';
-        nemonic =
+        mnemonic =
             '//android.widget.TextView[contains(@content-desc,"word")]';
     
         // Other locator strategy examples
