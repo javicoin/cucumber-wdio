@@ -118,7 +118,7 @@ exports.config = {
      source: true,
      strict: false,
      tagsInTitle: false,
-     timeout: 20000,
+     timeout: 60000,
      retry: 0
     },
     //

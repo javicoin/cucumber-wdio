@@ -96,22 +96,22 @@ It's required to provide BrowserStack credentials as environment variables (proc
 ### Downloading/Uploading Cucumber features (tests) & Creating Test Executions in Jira
 - [@xray-app/xray-automation module](https://github.com/javicoin/xray-automation-js)
 
-This module based on axios is used to interact with Jira XRay API, it lets:
+This module based on axios is used to interact with Jira XRay API, it allows:
 - Download/Upload the E2E tests written on Gherkin
-- Once tests are executed, it lets to upload their results by creating a Test Execution.
+- Once tests are executed, it allows to upload their results by creating a Test Execution.
 
 The goal should be managing the features in the source code in order to avoid sync issues on Jira and for better maintainance and flexibility, as follows [Pure VCS based workflow](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
 
 Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
 
-- `cucumber:download_features` let's the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
-- `cucumber:upload_features` let's the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
+- `cucumber:download_features` allows the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
+- `cucumber:upload_features` allows the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
 - `cucumber:submit_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.multipart.config.json`
 
 ### Features serialization
 - [wdio-cucumber-parallel-execution](https://github.com/javicoin/wdio-cucumber-parallel-execution)
 
-This module lets:
+This module allows:
 - Splitting features containing multiple Scenario/Scenario Outline into independent features in order to be executed either sequencially or in parallel (specially useful to avoid queuing in browserstack if we have a certain limitations)
 - Generating a consolidated JSON report (merges individual JSON report files into 1 file so it can be used to create the Test Execution in Jira mentioned above). However, to achieve this, for now the framework uses `test/src/helpers/lib/mergeReports.js` instead.
 

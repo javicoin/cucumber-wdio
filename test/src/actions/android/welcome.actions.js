@@ -35,7 +35,7 @@ class WelcomeActions {
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
-        await ActionHelper.waitForElement(Pages.welcomePage.masterKeyTitle, 3000);
+        await ActionHelper.waitForDisplayed(Pages.welcomePage.masterKeyTitle);
     }
 
     async storeMasterKey() {

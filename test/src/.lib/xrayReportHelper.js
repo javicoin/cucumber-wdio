@@ -70,5 +70,4 @@ async function uploadCucumberFeatures(config) {
 
 module.exports.submitCucumberTestResults =  submitCucumberTestResults;
 module.exports.downloadCucumberFeatures =  downloadCucumberFeatures;
-//module.exports.processDownloadFeatures =  processDownloadFeatures;
 module.exports.uploadCucumberFeatures =  uploadCucumberFeatures;

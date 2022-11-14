@@ -13,6 +13,11 @@ class WelcomePage{
             'android=new UiSelector().text("Your Master Key").className("android.widget.TextView")';
         wordList =
             '//android.widget.TextView[contains(@content-desc,"word")]';
+
+        // Example of dynamic locator
+        // wordList(position) {
+        //     return `//XCUIElementTypeTextField[@name="input.wordInput"][${position}]`;
+        // }
     
         // Other locator strategy examples
         //'android=new UiSelector().text("new wallet").className("android.widget.TextView")';

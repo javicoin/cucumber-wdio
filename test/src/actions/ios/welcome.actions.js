@@ -13,7 +13,7 @@ class WelcomeActions extends AndroidWelcomeActions {
         let wordText2 = '';
         let wordText3 = '';
         for (let i = 1; i <= 8; i++) {
-            wordList = await $$(Pages.welcomePage.wordList);
+            wordList = await $$(Pages.welcomePage.wordList);            
             wordText1 = (await ActionHelper.getText(wordList[0])).split(' ')[1];
             wordText2 = (await ActionHelper.getText(wordList[1])).split(' ')[1];
             wordText3 = (await ActionHelper.getText(wordList[2])).split(' ')[1];

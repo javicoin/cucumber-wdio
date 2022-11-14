@@ -1,6 +1,6 @@
 const AndroidWelcomePage = require('../android/welcome.page');
 
-class WelcomePage extends AndroidWelcomePage{
+class WelcomePage extends AndroidWelcomePage {
         masterKeyTitle =
             '~Your Master Key';
         wordList =
