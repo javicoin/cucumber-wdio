@@ -11,7 +11,7 @@ class WelcomePage{
             '~buttonRight';
         masterKeyTitle =
             'android=new UiSelector().text("Your Master Key").className("android.widget.TextView")';
-        wordList =
+        mnemonic =
             '//android.widget.TextView[contains(@content-desc,"word")]';
     
         // Other locator strategy examples
