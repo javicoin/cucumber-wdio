@@ -1,7 +1,7 @@
-const Actions = require('../src/actions');
 const Pages = require('../src/pages');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const fs = require('fs');
+const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 
 const argv = require("yargs").argv;
 const wdioParallel = require('wdio-cucumber-parallel-execution/src');
@@ -233,11 +233,11 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    before: function (capabilities, specs) {
-        console.log("Initializing pages & actions...");
+    before: async function (capabilities, specs) {
+        console.log("Initializing pages...");
         const platform = capabilities.platformName.toLowerCase();
-        Pages.initPageFiles(platform);
-        Actions.initActionFiles(platform);
+        Pages.initPageObjects(platform);
+        await ActionHelper.addCommands(browser);
     },
     /**
      * Runs before a WebdriverIO command gets executed.

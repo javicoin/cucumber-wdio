@@ -2,8 +2,8 @@ class Pages {
 
     static welcomePage;
 
-    static initPageFiles(platform) {
-        // How to include android/ios page class:
+    static initPageObjects(platform) {
+        // How to include android/ios page object class:
         // Add prefix using literal string like:
         // ```
         // const WelcomePage = require(`./pages/${platform}/welcome.page.js`);
