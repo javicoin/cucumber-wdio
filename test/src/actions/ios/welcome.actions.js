@@ -3,7 +3,7 @@ const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const Pages = require('../../pages');
 const walletData = './test/resources/files/walletData.json';
-const importData = require('../../../resources/files/importWallet.json')
+const importData = require('../../../resources/files/walletData.json')
 
 class WelcomeActions extends AndroidWelcomeActions {
 
@@ -30,7 +30,7 @@ class WelcomeActions extends AndroidWelcomeActions {
     async addMasterKey() {
         for (let i = 0; i < 24;) {
             for (let j = 1; j <= 3; j++) {
-                await ActionHelper.setText(Pages.welcomePage.typeNemonic(j), importData.masterKey[i]);
+                await ActionHelper.setText(Pages.welcomePage.typeNemonic(j), importData.importWallet[i]);
                 await ActionHelper.pause(500);
                 if (await $(Pages.welcomePage.wordSuggestion).isDisplayed()) {
                     await ActionHelper.click(Pages.welcomePage.wordSuggestion);

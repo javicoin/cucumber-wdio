@@ -1,4 +1,13 @@
 {"address":"address",
 "masterKey":[
     
-]}
+],
+"importWallet": [
+   
+  ],
+  "pass": [
+    "1",
+    "2",
+    "0",
+    "9"
+  ]}

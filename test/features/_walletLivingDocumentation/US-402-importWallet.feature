@@ -1,6 +1,6 @@
 Feature: Verify the user can import an existing wallet
 
-	@US-402 @testing  @android @ios
+	@US-402 @android @ios
 	Scenario: Verify the user can import an existing wallet
 		Given I launch the app
 		When I proceed to import an existing wallet
