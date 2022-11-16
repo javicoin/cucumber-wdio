@@ -35,17 +35,17 @@ class WelcomeActions {
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
         await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
-        await ActionHelper.waitForElement(Pages.welcomePage.masterKeyTitle, 3000);
+        await ActionHelper.waitForDisplayed(Pages.welcomePage.masterKeyTitle, 3000);
     }
 
     async storeMasterKey() {
         const masterKey = [];
         let wordList = '';
-        let wordText1 = '';;
+        let wordText1 = '';
         let wordText2 = '';
         let wordText3 = '';
         for (let i = 1; i <= 8; i++) {
-            wordList = await $$(Pages.welcomePage.wordList);
+            wordList = await $$(Pages.welcomePage.mnemonic);
             wordText1 = await ActionHelper.getText(wordList[0]);
             wordText2 = await ActionHelper.getText(wordList[1]);
             wordText3 = await ActionHelper.getText(wordList[2]);
