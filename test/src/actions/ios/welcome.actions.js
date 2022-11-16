@@ -3,6 +3,7 @@ const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const Pages = require('../../pages');
 const walletData = './test/resources/files/walletData.json';
+const importData = require('../../../resources/files/importWallet.json')
 
 class WelcomeActions extends AndroidWelcomeActions {
 
@@ -25,6 +26,34 @@ class WelcomeActions extends AndroidWelcomeActions {
         }
         FilesHelper.editJsonByKey(walletData, "masterKey", masterKey);
     }
+
+    async addMasterKey() {
+        for (let i = 0; i < 24;) {
+            for (let j = 1; j <= 3; j++) {
+                await ActionHelper.setText(Pages.welcomePage.typeNemonic(j), importData.masterKey[i]);
+                await ActionHelper.pause(500);
+                if (await $(Pages.welcomePage.wordSuggestion).isDisplayed()) {
+                    await ActionHelper.click(Pages.welcomePage.wordSuggestion);
+                }
+                i++
+            }
+            await ActionHelper.click(Pages.welcomePage.rightNavigationArrow);
+        }
+    }
+
+    async setPin() {
+        await ActionHelper.pause(6000);
+        for (let i = 0; i <= 3; i++) {
+            await ActionHelper.click(Pages.welcomePage.pin(importData.pass[i]));
+        }
+    }
+
+    async home() {
+        await expect(await $(Pages.welcomePage.landing).isDisplayed())
+    }
+
+
+
 }
 
 module.exports = WelcomeActions;
