@@ -52,7 +52,7 @@ jobs:
         - name: Consolidate JSON report
           if: success() || failure()
           run: |
-            npm run merge_json_reports
+            npm run report:merge_json_files
 
         - name: Archive JSON report
           if: always()
