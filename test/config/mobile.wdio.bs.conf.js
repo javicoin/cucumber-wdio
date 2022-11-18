@@ -314,7 +314,7 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
     onComplete: function(exitCode, config, capabilities, results) {
-        const multipartConfig = './test/config/xray/cucumber.multipart.config.json';
+        const multipartConfig = './test/config/xray/cucumber.config.json';
         const platform = [capabilities[0].platformName];
         try {
             let file = FilesHelper.getJsonContent(multipartConfig);

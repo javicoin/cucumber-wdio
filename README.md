@@ -104,16 +104,16 @@ The goal should be managing the features in the source code in order to avoid sy
 
 Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
 
-- `cucumber:download_features` allows the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumberConfig.json`
-- `cucumber:upload_features` allows the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumberConfig.json`
-- `cucumber:submit_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.multipart.config.json`
+- `cucumber:download_features` allows the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumber.config.json`
+- `cucumber:upload_features` allows the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumber.config.json`
+- `cucumber:submit_results` it creates a test execution in an existing test plan of an existing Jira project, uses `cucumber.config.json`
 
 ### Features serialization
 - [wdio-cucumber-parallel-execution](https://github.com/javicoin/wdio-cucumber-parallel-execution)
 
 This module allows:
 - Splitting features containing multiple Scenario/Scenario Outline into independent features in order to be executed either sequencially or in parallel (specially useful to avoid queuing in browserstack if we have a certain limitations)
-- Generating a consolidated JSON report (merges individual JSON report files into 1 file so it can be used to create the Test Execution in Jira mentioned above). However, to achieve this, for now the framework uses `test/src/helpers/lib/mergeReports.js` instead.
+- Generating a consolidated JSON report (merges individual JSON report files into 1 file so it can be used to create the Test Execution in Jira mentioned above). However, to achieve this, for now the framework uses the external library `wdio-common/lib/merge-reports.js` instead.
 
 ## Sources
 

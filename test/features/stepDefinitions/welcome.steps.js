@@ -1,12 +1,9 @@
 const {Given, When, Then} = require("@cucumber/cucumber");
 const Pages = require('../../src/pages');
-
-Given(/^I launch the app$/, async function () {
-    await Pages.welcomePage.launchApp();
-});
+const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 
 Given(/^I open the RSK wallet for the first time$/, async function () {
-	await Pages.welcomePage.launchFreshApp();
+	await ActionHelper.launchApp();
 });
 
 When(/^I create a new wallet$/, async function () {

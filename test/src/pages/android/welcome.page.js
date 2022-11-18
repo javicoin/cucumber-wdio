@@ -1,4 +1,3 @@
-const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const walletData = './test/resources/files/walletData.json';
 
@@ -15,19 +14,6 @@ class WelcomePage {
     // listMnemonic(position) {
     //   return `//XCUIElementTypeTextField[@name="input.wordInput"][${position}]`;
     // }            
-
-    async launchApp() {
-        await ActionHelper.launchApp();
-        await ActionHelper.switchToNativeContext();
-        await ActionHelper.pause();
-    }
-
-    async launchFreshApp() {
-        await ActionHelper.launchApp();
-        // await ActionHelper.launchFreshApp();
-        await ActionHelper.switchToNativeContext();
-        await ActionHelper.pause();
-    }
 
     async createWallet() {
         // TODO: click alert if present
