@@ -1,6 +1,8 @@
 class Pages {
 
     static welcomePage;
+    static basePage;
+
 
     static initPageObjects(platform) {
         // How to include android/ios page object class:
@@ -12,6 +14,9 @@ class Pages {
         //
         const WelcomePage = require(`./pages/${platform}/welcome.page`);
         Pages.welcomePage = new WelcomePage();
+
+        const BasePage = require(`./pages/base.page`);
+        Pages.basePage = new BasePage();
 
     }
 }

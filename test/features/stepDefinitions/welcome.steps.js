@@ -2,11 +2,11 @@ const {Given, When, Then} = require("@cucumber/cucumber");
 const Pages = require('../../src/pages');
 
 Given(/^I launch the app$/, async function () {
-    await Pages.welcomePage.launchApp();
+    await Pages.basePage.launchApp();
 });
 
 Given(/^I open the RSK wallet for the first time$/, async function () {
-	await Pages.welcomePage.launchFreshApp();
+	await Pages.basePage.launchFreshApp();
 });
 
 When(/^I create a new wallet$/, async function () {

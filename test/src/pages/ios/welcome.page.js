@@ -1,10 +1,10 @@
-const AndroidWelcomePage = require('../android/welcome.page');
+const basePage = require('../base.page');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 // const {WaitHelper, timeouts} = require('wdio-common/helpers/utils/wait-helper.js');
 // const waitHelper = new WaitHelper();
 const walletData = './test/resources/files/walletData.json';
 
-class WelcomePage extends AndroidWelcomePage {
+class WelcomePage extends basePage {
     
     textMasterKeyTitle () { return $('~Your Master Key') }
     listMnemonic () { return $('//XCUIElementTypeStaticText[contains(@label,"word")]') }
