@@ -37,9 +37,9 @@ async importWallet() {
 
 async skipOnboarding() {
     await this.btnSecureNow().click();
-    await this.btnRightNavigationArrow().click();
-    await this.btnRightNavigationArrow().click();
-    await this.btnRightNavigationArrow().click();
+    await this.btnRightNavigationArrow().click({waitForStatic: true});
+    await this.btnRightNavigationArrow().click({waitForStatic: true});
+    await this.btnRightNavigationArrow().click({waitForStatic: true});
     await this.textMasterKeyTitle().getText({waitForDisplayed: true});
 }
 }
