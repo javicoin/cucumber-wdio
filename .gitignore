@@ -11,7 +11,7 @@ npm-debug.log*
 node_modules/
 
 #Config
-test/config/xray/jira.cloud.json
+config/xray/jira.cloud.json
 
 #Features backup
 test/features/*_backup

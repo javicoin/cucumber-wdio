@@ -1,23 +1,12 @@
-const Pages = require('../src/pages');
+const Pages = require('../test/src/pages');
+const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
 const fs = require('fs');
-const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
+const pkg = require('../package.json');
 
-const argv = require("yargs").argv;
-const wdioParallel = require('wdio-cucumber-parallel-execution/src');
-const sourceSpecDirectory = `test/features/_walletLivingDocumentation`;
+const cucumberConfig = FilesHelper.getJsonContent(pkg.config.cucumberConfig);
+const sourceSpecDirectory = cucumberConfig.featuresPath;
 let featureFilePath = `${sourceSpecDirectory}/*.feature`;
-
-// If parallel execution is set to true, then create the Split the feature files
-// And store then in a tmp spec directory (created inside `the source spec directory)
-if (argv.parallel === 'true') {
-    tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
-    wdioParallel.performSetup({
-        sourceSpecDirectory: sourceSpecDirectory,
-        tmpSpecDirectory: tmpSpecDirectory
-    });
-    featureFilePath = `${tmpSpecDirectory}/*.feature`
-}
 
 exports.config = {
     //
@@ -38,8 +27,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        `${featureFilePath}`
-        //'test/features/*LivingDocumentation/*.feature'        
+        `${featureFilePath}`      
     ],
     // Patterns to exclude.
     exclude: [
@@ -114,7 +102,7 @@ exports.config = {
     services: [
         ['appium', {
             command: 'appium',
-            logPath : './logs_appium'
+            logPath : 'logs_appium'
         }]
     ],
     port: 4723,
@@ -178,14 +166,14 @@ exports.config = {
     reporters: [
         [
             'cucumberjs-json', {
-                jsonFolder: './test/reports/mobile/cucumber/json/',
+                jsonFolder: 'test/reports/mobile/cucumber/json/',
                 language: 'en',
                 disableHooks:true
             }
         ],
         [
             'allure', {
-                outputDir: './test/reports/mobile/allure-results',
+                outputDir: 'test/reports/mobile/allure-results',
                 disableWebdriverStepsReporting: false,
                 disableWebdriverScreenshotsReporting: false,
                 useCucumberStepReporter: true,
@@ -315,7 +303,7 @@ exports.config = {
      * @param {<Object>} results object containing test results
      */
     onComplete: function(exitCode, config, capabilities, results) {
-        const multipartConfig = './test/config/xray/cucumber.config.json';
+        const multipartConfig = 'config/xray/cucumber.config.json';
         const platform = [capabilities[0].platformName];
         try {
             let file = FilesHelper.getJsonContent(multipartConfig);

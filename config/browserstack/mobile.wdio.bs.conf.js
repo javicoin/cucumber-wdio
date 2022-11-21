@@ -1,3 +1,26 @@
+const Pages = require('../../test/src/pages');
+const ActionHelper = require('wdio-common/helpers/components/action-helper.js');
+const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
+const fs = require('fs');
+const pkg = require('../../package.json');
+const argv = require("yargs").argv;
+const wdioParallel = require('wdio-cucumber-parallel-execution/src');
+
+const cucumberConfig = FilesHelper.getJsonContent(pkg.config.cucumberConfig);
+const sourceSpecDirectory = cucumberConfig.featuresPath;
+let featureFilePath = `${sourceSpecDirectory}/*.feature`;
+
+// If parallel execution is set to true, then create the Split the feature files
+// And store then in a tmp spec directory (created inside `the source spec directory)
+if (argv.parallel === 'true') {
+    tmpSpecDirectory = `${sourceSpecDirectory}/tmp`;
+    wdioParallel.performSetup({
+        sourceSpecDirectory: sourceSpecDirectory,
+        tmpSpecDirectory: tmpSpecDirectory
+    });
+    featureFilePath = `${tmpSpecDirectory}/*.feature`
+}
+
 exports.config = {
     //
     // ====================
@@ -6,7 +29,8 @@ exports.config = {
     //
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
-    runner: 'local',
+    user: process.env.BROWSERSTACK_USERNAME,
+    key: process.env.BROWSERSTACK_ACCESS_KEY,
     //
     // ==================
     // Specify Test Files
@@ -17,8 +41,7 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-    // test/features/*LivingDocumentation/*.feature
-        'test/features/*LivingDocumentation/*.feature'
+        `${featureFilePath}`
     ],
     // Patterns to exclude.
     exclude: [
@@ -81,22 +104,23 @@ exports.config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 20000,
+    connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 1,
+    connectionRetryCount: 0,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     services: [
-        ['chromedriver', {
-            logFileName: 'wdio-chromedriver.log', // default
-            outputDir: 'driver-logs', // overwrites the config.outputDir
-            args: ['start-maximized']
+        ['browserstack', {
+            browserstackLocal: true,
+            preferScenarioName: true
         }]
     ],
+    // port: 4723,
+    // path: '/wd/hub',
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html
@@ -105,21 +129,43 @@ exports.config = {
     // before running any tests.
     framework: 'cucumber',
     cucumberOpts: {
-     backtrace: false,
-     requireModule: [],
-     failAmbiguousDefinitions: false,
-     failFast: false,
-     ignoreUndefinedDefinitions: false,
-     name: [],
-     profile: [],
-     require: ['test/features/stepDefinitions/*.steps.js'],
-     snippetSyntax: undefined,
-     snippets: true,
-     source: true,
-     strict: false,
-     tagsInTitle: false,
-     timeout: 60000,
-     retry: 0
+        require: ['test/features/stepDefinitions/*.steps.js'],
+
+        // <boolean> show full backtrace for errors
+        backtrace: false,
+
+        requireModule: [],
+        failAmbiguousDefinitions: false,
+
+        // <boolean> abort the run on first failure
+        failFast: false,
+
+        // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
+        format: ['json', 'html'],
+
+        // <boolean> Enable this config to treat undefined definitions as warnings.
+        ignoreUndefinedDefinitions: false,
+
+        // <string[]> (name) specify the profile to use
+        profile: [],
+
+        snippetSyntax: undefined,
+
+        // <boolean> hide step definition snippets for pending steps
+        snippets: true,
+
+        // <boolean> hide source uris
+        source: true,
+
+        // <boolean> fail if there are any undefined or pending steps
+        strict: true,
+
+        tagsInTitle: false,
+
+        // <number> timeout for step definitions
+        timeout: 60000,
+
+        retry: 0
     },
     //
     // The number of times to retry the entire specfile when it fails as a whole
@@ -134,15 +180,16 @@ exports.config = {
     reporters: [
         [
             'cucumberjs-json', {
-                jsonFolder: './test/reports/web/cucumber',
+                jsonFolder: 'test/reports/mobile/cucumber/json/',
                 language: 'en',
+                disableHooks:true
             }
         ],
         [
             'allure', {
-                outputDir: './test/reports/web/allure-results',
-                disableWebdriverStepsReporting: true,
-                disableWebdriverScreenshotsReporting: true,
+                outputDir: 'test/reports/mobile/allure-results',
+                disableWebdriverStepsReporting: false,
+                disableWebdriverScreenshotsReporting: false,
                 useCucumberStepReporter: true,
                 disableMochaHooks: true
             }
@@ -160,8 +207,8 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    //  onPrepare: function (config, capabilities) {
+    //  },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
@@ -188,8 +235,12 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: async function (capabilities, specs) {
+        console.log("Initializing pages...");
+        const platform = capabilities.platformName.toLowerCase();
+        Pages.initPageObjects(platform);
+        await ActionHelper.addCommands(browser);
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -265,8 +316,17 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function(exitCode, config, capabilities, results) {
+        const multipartConfig = 'config/xray/cucumber.config.json';
+        const platform = [capabilities[0].platformName];
+        try {
+            let file = FilesHelper.getJsonContent(multipartConfig);
+            file.testExecInfo.xrayFields.environments = platform;
+            fs.writeFileSync(multipartConfig, JSON.stringify(file));
+        } catch (error) {
+            throw Error(error);
+        }
+    },
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session

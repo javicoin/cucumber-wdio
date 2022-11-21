@@ -77,7 +77,7 @@ Follow the below commands
 - Install dependencies using `npm i` in the terminal.
 (To install code upgrades, execute `rm -rf node_modules && npm cache clean -f && rm package.lock && npm i`)
 
-- Update the deviceName and platFormVersion in `config/android.device.info.js` and `config/ios.device.info.js` respectively. 
+- Update the deviceName and platFormVersion in `config/android.local.conf.js` and `config/ios.local.conf.js` respectively. 
   For Android, it's mandatory to have the emulator configured & running before launching the tests, for iOS just a configured emulator is enough.
 
 - Execute `test:android:local` script to run android native app locally
@@ -86,7 +86,7 @@ Follow the below commands
 
 
 ## Browserstack
-BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the /test/config folder.
+BrowserStack specific code has been added in the `mobile.wdio.bs.conf.js` under the `config/browserstack` folder.
 
 It's required to provide BrowserStack credentials as environment variables (process.env.BROWSERSTACK_USERNAME & process.env.BROWSERSTACK_ACCESS_KEY).
 
@@ -102,7 +102,7 @@ This module based on axios is used to interact with Jira XRay API, it allows:
 
 The goal should be managing the features in the source code in order to avoid sync issues on Jira and for better maintainance and flexibility, as follows [Pure VCS based workflow](https://docs.getxray.app/pages/viewpage.action?pageId=31622264)
 
-Required condiguration files (except jira.cloud.json containing Jira API credentials) can be found in `test/config/xray/`
+Required condiguration file (except jira.cloud.json containing Jira API credentials) can be found in `config/xray`
 
 - `cucumber:download_features` allows the user download specific tests (using Jira test KEY) or a set of tests under a filter (filter must be public, each test of the filter MUST belong to a user story/task). It uses `cucumber.config.json`
 - `cucumber:upload_features` allows the user upload ALL the tests under `test/features/_walletLivingDocumentation/` to a specific Jira project defined in `cucumber.config.json`

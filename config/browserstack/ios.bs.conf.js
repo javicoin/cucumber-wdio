@@ -1,12 +1,11 @@
 const {config} = require('./mobile.wdio.bs.conf');
-const IosInfo = require('./ios.device.info');
 
 config.capabilities = [
     {
         // Appium capabilities
         platformName: 'iOS',
-        'appium:deviceName': IosInfo.deviceName(),
-        'appium:platformVersion': IosInfo.platFormVersion(),
+        'appium:deviceName': 'iPhone 13',
+        'appium:platformVersion': '15.2',
         'appium:bundleId':'co.rsk.rifwallet.test',
         'appium:autoDismissAlerts': 'true',
         // bstack requirements   

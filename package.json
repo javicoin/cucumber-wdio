@@ -7,15 +7,15 @@
     "url": "git://https://github.com/javicoin/cucumber-wdio"
   },
   "config": {
-    "cucumberConfig": "test/config/xray/cucumber.config.json",
+    "cucumberConfig": "config/xray/cucumber.config.json",
     "jsonReportsDirectory": "test/reports/mobile/cucumber/json"
   },
   "scripts": {
     "chrome": "wdio test/config/chrome.conf.js",
-    "test:android:local": "wdio test/config/android.local.conf.js --parallel=true",
-    "test:ios:local": "wdio test/config/ios.local.conf.js --parallel=true",
-    "test:android:browserstack": "wdio test/config/android.bs.conf.js --parallel=true",
-    "test:ios:browserstack": "wdio test/config/ios.bs.conf.js --parallel=true",
+    "test:android:local": "wdio config/android.local.conf.js",
+    "test:ios:local": "wdio config/ios.local.conf.js",
+    "test:android:browserstack": "wdio config/browserstack/android.bs.conf.js --parallel=true",
+    "test:ios:browserstack": "wdio config/browserstack/ios.bs.conf.js --parallel=true",
     "cucumber:download_features": "npx run-func ./node_modules/@xray-app/xray-automation/src/helpers/xray-helper.js downloadCucumberFeatures $npm_package_config_cucumberConfig",
     "cucumber:upload_features": "npx run-func ./node_modules/@xray-app/xray-automation/src/helpers/xray-helper.js uploadCucumberFeatures $npm_package_config_cucumberConfig",
     "report:merge_json_files": "npx run-func node_modules/wdio-common/lib/merge-reports.js mergeJsonReports $npm_package_config_jsonReportsDirectory",
