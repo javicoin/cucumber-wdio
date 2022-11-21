@@ -1,5 +1,4 @@
 const FilesHelper = require('wdio-common/helpers/utils/file-helper.js');
-const walletData = './test/resources/files/walletData.json';
 
 class WelcomePage {
 
@@ -48,8 +47,9 @@ class WelcomePage {
             wordText3 = await wordList[2].getText();
             masterKey.push(wordText1, wordText2, wordText3);
             await this.btnRightNavigationArrow.click();
-        }
-        FilesHelper.editJsonByKey(walletData, "masterKey", masterKey);
+        }        
+        const jsonFile = FilesHelper.createJsonFile('walletData');
+        FilesHelper.editJsonByKey(jsonFile, 'masterKey', masterKey);
     }
 }
 

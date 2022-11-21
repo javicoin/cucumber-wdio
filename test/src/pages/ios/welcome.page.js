@@ -20,9 +20,11 @@ class WelcomePage extends AndroidWelcomePage {
             wordText1 = wordList[0].split(' ')[1];
             wordText2 = wordList[1].split(' ')[1];
             wordText3 = wordList[2].split(' ')[1];
+            masterKey.push(wordText1, wordText2, wordText3);
             await this.btnRightNavigationArrow.click({waitForStatic: true});
         }
-        FilesHelper.editJsonByKey(walletData, "masterKey", masterKey);
+        const jsonFile = FilesHelper.createJsonFile('walletData');
+        FilesHelper.editJsonByKey(jsonFile, 'masterKey', masterKey);
     }
 }
 

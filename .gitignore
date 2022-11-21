@@ -17,7 +17,7 @@ config/xray/jira.cloud.json
 test/features/*_backup
 
 #Resources
-test/resources/
+test/resources/files/walletData.json
 
 # Reports
 allure-report
