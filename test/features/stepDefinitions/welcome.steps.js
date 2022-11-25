@@ -15,3 +15,12 @@ When(/^I create a new wallet$/, async function () {
 Given(/^I navigate to IOV website$/,async function () {
 	await browser.url('https://www.iovlabs.org/');
 });
+
+Given(/^I proceed to import an existing wallet$/, async function () {
+	await Pages.welcomePage.importWallet();
+});
+
+When(/^I input the master key of an existing wallet$/, async function () {
+	await Pages.welcomePage.addMasterKey();
+	await Pages.welcomePage.setPin();
+});
