@@ -22,7 +22,7 @@ class WelcomePage {
     //TODO -> Waiting for unique locator
     get listMnemonic() {
         if (this.runningAndroid()) {
-            return '//android.widget.TextView[contains(@content-desc,"word")]'
+            return $('//android.widget.TextView[contains(@content-desc,"word")]')
         }
         return $('//XCUIElementTypeStaticText[contains(@label,"word")]');
     }
@@ -39,8 +39,6 @@ class WelcomePage {
         }
         return $(`~keypad_${num}`)
     }
-
-    get btnHome() { return $('~home') };
 
     async createWallet() {
         this.closeAdvice();
@@ -59,34 +57,16 @@ class WelcomePage {
         for (let i = 1; i <= 3; i++) {
             await this.btnRightNavigationArrow.click({ waitForStatic: true });
         }
-        await expect(awaitthis.textMasterKeyTitle).toBeDisplayed();
+        await expect(this.textMasterKeyTitle).toBeDisplayed();
     }
 
     async storeMasterKey() {
         const masterKey = [];
         let wordList = '';
-        let wordText1 = '';;
-        let wordText2 = '';
-        let wordText3 = '';
-
-        if (this.runningAndroid()) {
-            for (let i = 1; i <= 4; i++) {
-                wordList = await $$(this.listMnemonic);
-                wordText1 = await wordList[0].getText();
-                wordText2 = await wordList[1].getText();
-                wordText3 = await wordList[2].getText();
-                masterKey.push(wordText1, wordText2, wordText3);
-                await this.btnRightNavigationArrow.click();
-            }
-        } else {
-            for (let i = 1; i <= 4; i++) {
-                wordList = await this.listMnemonic.getElementsText();
-                wordText1 = wordList[0].split(' ')[1];
-                wordText2 = wordList[1].split(' ')[1];
-                wordText3 = wordList[2].split(' ')[1];
-                masterKey.push(wordText1, wordText2, wordText3);
-                await this.btnRightNavigationArrow.click({ waitForStatic: true });
-            }
+        for (let i = 1; i <= 4; i++) {
+            wordList = await this.listMnemonic.getElementsText();
+            this.arrayStore(masterKey, wordList)
+            await this.btnRightNavigationArrow.click();
         }
         const jsonFile = FilesHelper.createJsonFile('walletData');
         FilesHelper.editJsonByKey(jsonFile, 'masterKey', masterKey);
@@ -117,10 +97,6 @@ class WelcomePage {
         }
     }
 
-    async home() {
-        await expect(await this.btnHome).toBeDisplayed();
-    }
-
     async closeAdvice() {
         if (this.runningAndroid()) {
             await this.btnOK.click();
@@ -129,6 +105,18 @@ class WelcomePage {
 
     runningAndroid() {
         return driver.isAndroid
+    }
+
+    async arrayStore(array, list) {
+        let i = 0;
+        if (this.runningAndroid()) {
+            for (i; i < 3; i++) {
+                array.push(list[i])
+            }
+        }
+        for (i; i < 3; i++) {
+            array.push(list[i].split(' ')[1])
+        }
     }
 
 }
